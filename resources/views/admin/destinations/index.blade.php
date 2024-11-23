@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="d-flex justify-content-end mb-2">
-    <a href="#" class="btn btn-success ">Add Destination</a>
+    <a href="{{route('admin.destinations.create')}}" class="btn btn-success ">Add Destination</a>
 </div>
 
 

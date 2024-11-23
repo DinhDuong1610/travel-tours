@@ -15,10 +15,11 @@ Auth::routes();
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/category', [CategoryController::class, 'index'])->name('admin.category.index');
+    Route::get('/category/create', [CategoryController::class, 'create'])->name('admin.category.create');
     Route::get('/destinations', [DestinationsController::class, 'index'])->name('admin.destinations.index');
+    Route::get('/destinations/create', [DestinationsController::class, 'create'])->name('admin.destinations.create');
     Route::get('/tag', [TagController::class, 'index'])->name('admin.tag.index');
     Route::get('/blog', [BlogController::class, 'index'])->name('admin.blog.index');
     Route::get('/blog/create', [BlogController::class, 'create'])->name('admin.blog.create');
-
 });
 
