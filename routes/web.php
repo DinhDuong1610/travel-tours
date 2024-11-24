@@ -3,17 +3,20 @@
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DestinationsController;
+use App\Http\Controllers\PageController;
 use App\Http\Controllers\TagController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('pages.home');
-});
 
 Auth::routes();
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth'])->prefix('admin')->group(function () {
+
+    Route::get('/home', function () {
+        return view('pages.home');
+    });
+    
     Route::get('/category', [CategoryController::class, 'index'])->name('admin.category.index');
     Route::get('/category/create', [CategoryController::class, 'create'])->name('admin.category.create');
     Route::post('/category/store', [CategoryController::class, 'store'])->name('admin.category.store');
@@ -31,3 +34,10 @@ Route::middleware(['auth'])->group(function () {
     Route::post('blog/store', [BlogController::class, 'store'])->name('admin.blog.store');
 });
 
+Route::get('/', [PageController::class, 'index'])->name('pages.welcome');
+
+Route::get('/about', [PageController::class, 'about'])->name('pages.about');
+
+Route::get('/packages', [PageController::class, 'packages'])->name('pages.packages');
+
+Route::get('/blog', [PageController::class, 'blog'])->name('pages.blog');
