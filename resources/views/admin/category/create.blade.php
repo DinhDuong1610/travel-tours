@@ -13,7 +13,9 @@
 
       <form 
         {{-- action="{{isset($category) ? route('categories.update', $category->id) :route('categories.store') }}" --}}
-         method="POST">
+        action="{{route('admin.category.store')}}" 
+        method="POST"
+        enctype="multipart/form-data">
          @csrf
          @if (isset($category))
          @method('PUT')
@@ -32,6 +34,4 @@
    </div>
 
 </div>
-
-
 @endsection
