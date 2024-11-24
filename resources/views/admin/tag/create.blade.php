@@ -12,6 +12,7 @@
         @include('error')
         <form 
             {{-- action="{{isset($tag) ? route('tags.update', $tag->id) :route('tags.store') }}"  --}}
+            action="{{route('admin.tag.store')}}" 
             method="POST">
             @csrf
             @if (isset($tag))
