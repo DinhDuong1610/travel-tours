@@ -50,4 +50,20 @@ class PageController extends Controller
 
         return view('pages.contact', compact('tags', 'categories'));
     }
+
+    public function bali() {
+        $destinations = Destinations::all();
+        $tags = Tag::all();
+        $categories = Category::all();
+
+        return view('pages.bali', compact('destinations', 'tags', 'categories'));
+    }
+
+    public function cart() {
+        $destinations = Destinations::first();
+        $tags = Tag::all();
+        $categories = Category::all();
+
+        return view('pages.cart', compact('destinations', 'tags', 'categories'));
+    }
 }
