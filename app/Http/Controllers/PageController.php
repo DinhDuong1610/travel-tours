@@ -72,4 +72,10 @@ class PageController extends Controller
 
         return view('pages.checkout', compact('destinations'));
     }
+    
+    public function stripe() {
+        $destinations = Destinations::first();
+
+        return view('pages.stripe', compact('destinations'));
+    }
 }

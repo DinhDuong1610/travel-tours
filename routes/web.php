@@ -49,3 +49,5 @@ Route::get('/bali', [PageController::class, 'bali'])->name('pages.bali');
 Route::get('/cart', [PageController::class, 'cart'])->name('pages.cart');
 
 Route::get('/checkout', [PageController::class, 'checkout'])->name('pages.checkout');
+
+Route::get('/stripe', [PageController::class, 'stripe'])->name('pages.stripe');
