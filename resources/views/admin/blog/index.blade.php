@@ -22,7 +22,7 @@
                 @foreach ($blogs as $blog)
                 <tr>
                     <td class="text-center">
-                        <img src="{{asset('/storage/' . $blog->image)}}" width="150px" height="70px"
+                        <img src="{{asset('/storage/' . $blog->image)}}" style="width: 150px; height: 80px;"
                             class="img-thumbnail" alt="responsive image">
                     </td>
                     <td>{{ $blog->title }}</td>
@@ -56,6 +56,11 @@
                 @endforeach
             </tbody>
         </table>
+
+        <!-- Pagination -->
+        <div class="d-flex justify-content-center">
+            {{ $blogs->links('pagination::bootstrap-4') }}
+        </div>
         @else
         <h3 class="text-center">Chưa có bài viết nào</h3>
         @endif
@@ -196,6 +201,28 @@
 .alert {
     border-radius: 0.375rem;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.pagination {
+    background-color: #343a40; /* Tương đương với bg-dark của Bootstrap */
+}
+
+/* Màu chữ sáng cho các liên kết */
+.pagination .page-link {
+    color: #3b3b3b; /* Màu chữ sáng cho các trang */
+}
+
+/* Thay đổi màu khi hover */
+.pagination .page-item:hover .page-link {
+    background-color: #495057; /* Màu xám nhạt hơn khi hover */
+    color: #ffffff; /* Màu chữ vẫn sáng khi hover */
+}
+
+/* Thay đổi màu của trang đang được chọn */
+.pagination .page-item.active .page-link {
+    background-color: #343a40; /* Màu xanh lam cho trang hiện tại */
+    color: #ffffff; /* Màu chữ sáng */
+    border: none;
 }
 
 </style>

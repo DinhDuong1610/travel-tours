@@ -6,20 +6,19 @@
 </nav>
 <!-- END nav -->
 
-<div class="hero-wrap js-fullheight" style="background-image: url('images/place-4.jpg');"
+<div class="hero-wrap js-fullheight" style="background-image: url('images/place-6.jpg');"
 	data-stellar-background-ratio="0.5">
 	<div class="overlay"></div>
 	<div class="container">
 		<div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center"
 			data-scrollax-parent="true">
 			<div class="col-md-9 text text-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-				<a href="https://vimeo.com/45830194"
+				{{-- <a href="https://vimeo.com/45830194"
 					class="icon-video popup-vimeo d-flex align-items-center justify-content-center mb-4">
 					<span class="ion-ios-play"></span>
-				</a>
-				<p class="caps" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Travel to the any corner
-					of the world, without going around in circles</p>
-				<h1 data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Make Your Tour Amazing With Us</h1>
+				</a> --}}
+				<p class="caps" data-scrollax="properties: { translateY: '40%', opacity: 1.6 }">Du lịch đến mọi nơi trên thế giới mà không phải tìm đâu xa</p>
+				<h1 data-scrollax="properties: { translateY: '50%', opacity: 1.6 }"><b>Chào mừng đến với VyHa</b><br>Đi đến bất kỳ đâu bạn muốn</h1>
 			</div>
 		</div>
 	</div>

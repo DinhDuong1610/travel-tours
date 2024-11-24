@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class TagController extends Controller
 {
     public function index() {
-        $tags = Tag::all();
+        $tags = Tag::paginate(8);
         return view('admin.tag.index', compact('tags'));
     }
 

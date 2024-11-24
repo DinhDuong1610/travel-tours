@@ -23,8 +23,8 @@
             <tbody>
                 @foreach ($destinations as $destination)
                 <tr>
-                    <td>
-                        <img src="{{asset('/storage/' . $destination->image)}}" width="150px" height="70px"
+                    <td class="text-center">
+                        <img src="{{asset('/storage/' . $destination->image)}}" style="width: 150px; height: 80px;"
                             class="img-thumbnail" alt="responsive image">
                     </td>
                     <td>
@@ -34,7 +34,7 @@
                         <a href="#" class="text-primary font-weight-bold">{{$destination->category->name}}</a>
                     </td>
                     <td class="text-center">
-                        <!-- Placeholder for Pricing if needed -->
+                        {{ number_format($destination->pricing, 0, ',', '.') }} VND
                     </td>
 
                     @if ($destination->trashed())
@@ -65,6 +65,12 @@
                 @endforeach
             </tbody>
         </table>
+
+        <!-- Pagination -->
+        <div class="d-flex justify-content-center">
+            {{ $destinations->links('pagination::bootstrap-4')}}
+        </div>
+        
         @else
         <h3 class="text-center">Chưa có điểm đến nào</h3>
         @endif
@@ -75,6 +81,7 @@
 
 @section('css') 
     <style>
+
 .card {
         border-radius: 0.375rem;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -168,5 +175,28 @@
         border-radius: 0.375rem;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     }
+
+    /* Màu nền tối cho pagination */
+.pagination {
+    background-color: #343a40; /* Tương đương với bg-dark của Bootstrap */
+}
+
+/* Màu chữ sáng cho các liên kết */
+.pagination .page-link {
+    color: #3b3b3b; /* Màu chữ sáng cho các trang */
+}
+
+/* Thay đổi màu khi hover */
+.pagination .page-item:hover .page-link {
+    background-color: #495057; /* Màu xám nhạt hơn khi hover */
+    color: #ffffff; /* Màu chữ vẫn sáng khi hover */
+}
+
+/* Thay đổi màu của trang đang được chọn */
+.pagination .page-item.active .page-link {
+    background-color: #343a40; /* Màu xanh lam cho trang hiện tại */
+    color: #ffffff; /* Màu chữ sáng */
+    border: none;
+}
     </style>
 @endsection

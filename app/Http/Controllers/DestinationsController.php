@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 class DestinationsController extends Controller
 {
     public function index() {
-        $destinations = Destinations::all();
+        $destinations = Destinations::paginate(5);
         return view('admin.destinations.index', compact('destinations'));
     }
 
@@ -31,6 +31,7 @@ class DestinationsController extends Controller
         $destination->category_id = $request->category;
         $destination->image = $image;
         $destination->published_at = $request->published_at;
+        $destination->pricing = $request->pricing;
         $destination->save();
 
         if($request->tags){
