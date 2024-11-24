@@ -11,6 +11,7 @@
         @include('error')
         <form
             {{-- action="{{isset($destination) ? route('destinations.update', $destinations->id): route('destinations.store')}}" --}}
+            action="{{route('admin.destinations.store')}}"
             method="POST" enctype="multipart/form-data">
             @csrf
 
