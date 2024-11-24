@@ -66,4 +66,10 @@ class PageController extends Controller
 
         return view('pages.cart', compact('destinations', 'tags', 'categories'));
     }
+
+    public function checkout() {
+        $destinations = Destinations::first();
+
+        return view('pages.checkout', compact('destinations'));
+    }
 }

@@ -47,3 +47,5 @@ Route::get('/contact', [PageController::class, 'contact'])->name('pages.contact'
 Route::get('/bali', [PageController::class, 'bali'])->name('pages.bali');
 
 Route::get('/cart', [PageController::class, 'cart'])->name('pages.cart');
+
+Route::get('/checkout', [PageController::class, 'checkout'])->name('pages.checkout');
