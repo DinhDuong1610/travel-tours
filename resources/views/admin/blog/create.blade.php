@@ -11,6 +11,7 @@
         @include('error')
         <form
             {{-- action="{{isset($blog) ? route('blog.update', $blog->id): route('blog.store')}}" --}}
+            action="{{route('admin.blog.store')}}"
             method="POST" enctype="multipart/form-data">
             @csrf
 
