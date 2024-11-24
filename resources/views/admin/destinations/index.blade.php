@@ -4,8 +4,8 @@
 
 <div class="card card-default" style="min-height: calc(100vh - 100px);">
     <div class="card-header bg-dark text-white d-flex justify-content-between">
-        <strong>Destinations</strong>
-        <a href="{{route('admin.destinations.create')}}" class="btn btn-light">Add Destination</a>
+        <strong>Điểm đến</strong>
+        <a href="{{route('admin.destinations.create')}}" class="btn btn-light">Thêm điểm đến</a>
     </div>
 
     <div class="card-body">
@@ -13,11 +13,11 @@
         <table class="table table-striped table-bordered table-hover">
             <thead class="thead-dark">
                 <tr>
-                    <th>Image</th>
-                    <th>Title</th>
-                    <th>Category</th>
-                    <th>Pricing</th>
-                    <th colspan="2" class="text-center">Actions</th>
+                    <th>Ảnh</th>
+                    <th>Tiêu đề</th>
+                    <th>Danh mục</th>
+                    <th>Giá</th>
+                    <th colspan="2" class="text-center">Thao tác</th>
                 </tr>
             </thead>
             <tbody>
@@ -66,7 +66,7 @@
             </tbody>
         </table>
         @else
-        <h3 class="text-center">No Destinations Yet</h3>
+        <h3 class="text-center">Chưa có điểm đến nào</h3>
         @endif
     </div>
 </div>

@@ -4,18 +4,18 @@
 
 <div class="card card-default" style="min-height: calc(100vh - 100px);">
     <div class="card-header bg-dark text-white d-flex justify-content-between">
-        <strong>Blog</strong>
-        <a href="{{route('admin.blog.create')}}" class="btn btn-light">Add Blog</a>
+        <strong>Bài viết</strong>
+        <a href="{{route('admin.blog.create')}}" class="btn btn-light">Thêm bài viết</a>
     </div>
     <div class="card-body">
         @if ($blogs->count()>0)
         <table class="table table-striped table-bordered table-hover">
             <thead class="thead-dark">
                 <tr>
-                    <th>Image</th>
-                    <th>Title</th>
-                    <th>Category</th>
-                    <th colspan="2" class="text-center">Actions</th>
+                    <th>Ảnh</th>
+                    <th>Tiêu đề</th>
+                    <th>Danh mục</th>
+                    <th colspan="2" class="text-center">Thao tác</th>
                 </tr>
             </thead>
             <tbody>
@@ -57,7 +57,7 @@
             </tbody>
         </table>
         @else
-        <h3 class="text-center">No Blogs Yet</h3>
+        <h3 class="text-center">Chưa có bài viết nào</h3>
         @endif
     </div>
 </div>

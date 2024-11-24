@@ -4,7 +4,7 @@
 
 <div class="card card-default shadow-sm">
    <div class="card-header bg-dark text-white d-flex justify-content-between">
-      <strong>{{ isset($category) ? 'Edit Category' : 'Create Category' }}</strong>
+      <strong>{{ isset($category) ? 'Edit Category' : 'Thêm danh mục' }}</strong>
    </div>
 
    <div class="card-body">
@@ -17,14 +17,14 @@
          @endif
 
          <div class="form-group">
-            <label for="name" class="font-weight-bold">Category Name</label>
+            <label for="name" class="font-weight-bold">Tên danh mục</label>
             <input type="text" id="name" class="form-control" name="name" value="{{ isset($category) ? $category->name : '' }}">
          </div>
 
          <div class="form-group">
             <div class="d-flex justify-content-center">
                <button class="btn btn-dark">
-                  {{ isset($category) ? 'Update Category' : 'Add Category' }}
+                  {{ isset($category) ? 'Update Category' : 'Thêm danh mục' }}
                </button>
             </div>
          </div>

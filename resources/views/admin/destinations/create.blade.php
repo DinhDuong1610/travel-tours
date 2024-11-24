@@ -4,7 +4,7 @@
 
 <div class="card card-default card-dark">
     <div class="card-header bg-dark text-white d-flex justify-content-between">
-        <strong>{{ isset($destination) ? 'Edit Destination' : 'Create Destination' }}</strong>
+        <strong>{{ isset($destination) ? 'Edit Destination' : 'Thêm điểm đến' }}</strong>
     </div>
 
     <div class="card-body">
@@ -19,26 +19,31 @@
 
             <!-- Title -->
             <div class="form-group">
-                <label for="title">Title</label>
+                <label for="title">Tiêu đề</label>
                 <input type="text" class="form-control" name="title" id="title" value="{{ isset($destination) ? $destination->title : '' }}">
             </div>
 
             <!-- Description -->
             <div class="form-group">
-                <label for="description">Description</label>
+                <label for="description">Mô tả</label>
                 <textarea name="description" class="form-control" id="description" cols="5" rows="5">{{ isset($destination) ? $destination->description : '' }}</textarea>
             </div>
 
             <!-- Content (Trix Editor) -->
             <div class="form-group">
-                <label for="content">Content</label>
+                <label for="content">Nội dung</label>
                 <input id="content" type="hidden" name="content" value="{{ isset($destination) ? $destination->content : '' }}">
                 <trix-editor input="content"></trix-editor>
             </div>
 
+            <div class="form-group">
+                <label for="pricing">Giá</label>
+                <input type="number" min="0" step="1000" class="form-control" name="pricing" id="pricing" value="{{ isset($destination) ? $destination->pricing : '' }}">
+            </div>
+
             <!-- Published At (Flatpickr) -->
             <div class="form-group">
-                <label for="published_at">Published At</label>
+                <label for="published_at">Ngày phát hành</label>
                 <input type="text" class="form-control" name="published_at" id="published_at" value="{{ isset($destination) ? $destination->published_at : '' }}">
             </div>
 
@@ -52,10 +57,10 @@
             <!-- Image Upload -->
             <div class="form-group d-flex flex-column">
                 <div class="d-flex justify-content-start">
-                    <label for="image" class="mr-2">Image</label>
+                    <label for="image" class="mr-2">Ảnh</label>
                     <div class="custom-file">
                         <input type="file" class="custom-file-input" name="image" id="image" accept="image/*">
-                        <label class="custom-file-label" for="image">Choose image</label>
+                        <label class="custom-file-label" for="image">Chọn ảnh</label>
                     </div>
                 </div>
                 <div class="mt-2 d-flex justify-content-center">
@@ -65,7 +70,7 @@
 
             <!-- Category -->
             <div class="form-group">
-                <label for="category">Category</label>
+                <label for="category">Danh mục</label>
                 <select name="category" id="category" class="form-control">
                     @foreach ($categories as $category)
                         <option value="{{ $category->id }}" @if (isset($destination) && $category->id === $destination->category_id) selected @endif>
@@ -78,7 +83,7 @@
             <!-- Tags (Select2) -->
             @if ($tags->count() > 0)
                 <div class="form-group">
-                    <label for="tags">Tags</label>
+                    <label for="tags">Nhãn</label>
                     <select name="tags[]" id="tags" class="form-control tags-selector" multiple>
                         @foreach ($tags as $tag)
                             <option value="{{ $tag->id }}" @if (isset($destination) && $destination->hasTag($tag->id)) selected @endif>
@@ -93,7 +98,7 @@
             <div class="form-group">
                 <div class="d-flex justify-content-center">
                     <button type="submit" class="btn btn-dark">
-                        <b>{{ isset($destination) ? 'Update Destination' : 'Create Destination' }}</b>
+                        <b>{{ isset($destination) ? 'Update Destination' : 'Thêm địa điểm' }}</b>
                     </button>
                 </div>
             </div>
@@ -279,8 +284,8 @@
 
 .custom-file-label {
     display: inline-block;
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
+    padding: 3px 15px;
+    font-size: 14px;
     font-weight: 600;
     color: #1e1e1e;
     background-color: transparent;

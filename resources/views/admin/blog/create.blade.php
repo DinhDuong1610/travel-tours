@@ -4,7 +4,7 @@
 
 <div class="card card-default shadow-sm">
     <div class="card-header bg-dark text-white d-flex justify-content-between">
-        <strong>{{ isset($blog) ? 'Edit Blog' : 'Create Blog' }}</strong>
+        <strong>{{ isset($blog) ? 'Edit Blog' : 'Thêm bài viết' }}</strong>
     </div>
 
     <div class="card-body">
@@ -19,26 +19,26 @@
 
             <!-- Title -->
             <div class="form-group">
-                <label for="title">Title</label>
+                <label for="title">Tiêu đề</label>
                 <input type="text" class="form-control" name="title" id="title" value="{{ isset($blog) ? $blog->title : '' }}">
             </div>
 
             <!-- Description -->
             <div class="form-group">
-                <label for="description">Description</label>
+                <label for="description">Mô tả</label>
                 <textarea name="description" class="form-control" id="description" cols="5" rows="5">{{ isset($blog) ? $blog->description : '' }}</textarea>
             </div>
 
             <!-- Content (Trix Editor) -->
             <div class="form-group">
-                <label for="content">Content</label>
+                <label for="content">Nội dung</label>
                 <input id="content" type="hidden" name="content" value="{{ isset($blog) ? $blog->content : '' }}">
                 <trix-editor input="content"></trix-editor>
             </div>
 
             <!-- Published At (Flatpickr) -->
             <div class="form-group">
-                <label for="published_at">Published At</label>
+                <label for="published_at">Ngày phát hành</label>
                 <input type="text" class="form-control" name="published_at" id="published_at" value="{{ isset($blog) ? $blog->published_at : '' }}">
             </div>
 
@@ -52,10 +52,10 @@
             <!-- Image Upload -->
             <div class="form-group d-flex flex-column">
                 <div class="d-flex justify-content-start">
-                    <label for="image" class="mr-2">Image</label>
+                    <label for="image" class="mr-2">Ảnh</label>
                     <div class="custom-file">
                         <input type="file" class="custom-file-input" name="image" id="image" accept="image/*">
-                        <label class="custom-file-label" for="image">Choose image</label>
+                        <label class="custom-file-label" for="image">Chọn ảnh</label>
                     </div>
                 </div>
                 <div class="mt-2 d-flex justify-content-center">
@@ -65,7 +65,7 @@
 
             <!-- Category -->
             <div class="form-group">
-                <label for="category">Category</label>
+                <label for="category">Danh mục</label>
                 <select name="category" id="category" class="form-control">
                     @foreach ($categories as $category)
                         <option value="{{ $category->id }}" @if (isset($blog) && $category->id === $blog->category_id) selected @endif>
@@ -93,7 +93,7 @@
             <div class="form-group">
                 <div class="d-flex justify-content-center">
                     <button type="submit" class="btn btn-dark">
-                        <b>{{ isset($blog) ? 'Update Blog' : 'Create Blog' }}</b>
+                        <b>{{ isset($blog) ? 'Update Blog' : 'Thêm bài viết' }}</b>
                     </button>
                 </div>
             </div>
@@ -277,8 +277,8 @@
 
     .custom-file-label {
         display: inline-block;
-        padding: 0.5rem 1rem;
-        font-size: 1rem;
+        padding: 3px 15px;
+        font-size: 14px;
         font-weight: 600;
         color: #1e1e1e;
         background-color: transparent;

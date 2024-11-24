@@ -4,17 +4,17 @@
 
 <div class="card card-default" style="min-height: calc(100vh - 100px);">
     <div class="card-header bg-dark text-white d-flex justify-content-between">
-        <strong>Categories</strong>
-        <a href="{{route('admin.category.create')}}" class="btn btn-light">Add Category</a>
+        <strong>Danh mục</strong>
+        <a href="{{route('admin.category.create')}}" class="btn btn-light">Thêm danh mục</a>
     </div>
     <div class="card-body">
         @if ($categories->count()>0)
         <table class="table table-striped table-bordered table-hover">
             <thead class="thead-dark">
                 <tr>
-                    <th>Name</th>
-                    <th class="text-center">Destinations Count</th>
-                    <th colspan="2" class="text-center">Actions</th>
+                    <th>Tên</th>
+                    <th class="text-center">Số điểm đến</th>
+                    <th colspan="2" class="text-center">Thao tác</th>
                 </tr>
             </thead>
 
@@ -62,7 +62,7 @@
         </div>
 
         @else
-        <h3 class="text-center">No Categories Yet</h3>
+        <h3 class="text-center">Chưa có danh mục nào</h3>
         @endif
     </div>
 </div>

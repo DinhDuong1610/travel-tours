@@ -4,7 +4,7 @@
 
 <div class="card card-default shadow-sm">
     <div class="card-header bg-dark text-white d-flex justify-content-between">
-        <strong>{{ isset($tag) ? 'Edit Tag' : 'Create Tag' }}</strong>
+        <strong>{{ isset($tag) ? 'Edit Tag' : 'Thêm nhãn' }}</strong>
     </div>
 
     <div class="card-body">
@@ -17,14 +17,14 @@
             @endif
 
             <div class="form-group">
-                <label for="name" class="font-weight-bold">Tag Name</label>
+                <label for="name" class="font-weight-bold">Tên nhãn</label>
                 <input type="text" id="name" class="form-control" name="name" value="{{ isset($tag) ? $tag->name : '' }}">
             </div>
 
             <div class="form-group">
                 <div class="d-flex justify-content-center">
                     <button class="btn btn-dark">
-                        {{ isset($tag) ? 'Update Tag' : 'Add Tag' }}
+                        {{ isset($tag) ? 'Update Tag' : 'Thêm nhãn' }}
                     </button>
                 </div>
             </div>

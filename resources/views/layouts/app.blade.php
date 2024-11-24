@@ -275,22 +275,22 @@
                         <ul class="list-group">
                             @if (auth()->user()->isAdmin())
                             <li class="list-group-item">
-                                <a href="#"><i class="sidebar-icon fas fa-users"></i> Users</a>
+                                <a href="#"><i class="sidebar-icon fas fa-users"></i> Người dùng</a>
                             </li>
                             @endif
                             <li class="list-group-item">
-                                <a href="{{Route('admin.destinations.index')}}"><i class="sidebar-icon fas fa-map-marked-alt"></i> Destinations</a>
+                                <a href="{{Route('admin.destinations.index')}}"><i class="sidebar-icon fas fa-map-marked-alt"></i> Điểm đến</a>
                             </li>
                             <li class="list-group-item">
-                                <a href="{{Route('admin.category.index')}}"><i class="sidebar-icon fas fa-list-alt"></i> Categories</a>
+                                <a href="{{Route('admin.category.index')}}"><i class="sidebar-icon fas fa-list-alt"></i> Danh mục</a>
                             </li>
                             <li class="list-group-item">
-                                <a href="{{Route('admin.tag.index')}}"><i class="sidebar-icon fas fa-tags"></i> Tags</a>
+                                <a href="{{Route('admin.tag.index')}}"><i class="sidebar-icon fas fa-tags"></i> Nhãn</a>
                             </li>
                         </ul>
                         <ul class="list-group">
                             <li class="list-group-item">
-                                <a href="{{Route('admin.blog.index')}}"><i class="sidebar-icon fas fa-blog"></i> Blogs</a>
+                                <a href="{{Route('admin.blog.index')}}"><i class="sidebar-icon fas fa-blog"></i> Bài viết</a>
                             </li>
                         </ul>
                     </div>
