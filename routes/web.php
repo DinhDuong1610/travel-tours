@@ -41,3 +41,5 @@ Route::get('/about', [PageController::class, 'about'])->name('pages.about');
 Route::get('/packages', [PageController::class, 'packages'])->name('pages.packages');
 
 Route::get('/blog', [PageController::class, 'blog'])->name('pages.blog');
+
+Route::get('/contact', [PageController::class, 'contact'])->name('pages.contact');

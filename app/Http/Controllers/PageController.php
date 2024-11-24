@@ -43,4 +43,11 @@ class PageController extends Controller
 
         return view('pages.blog', compact('blogs', 'tags', 'categories'));
     }
+
+    public function contact() {
+        $tags = Tag::all();
+        $categories = Category::all();
+
+        return view('pages.contact', compact('tags', 'categories'));
+    }
 }
