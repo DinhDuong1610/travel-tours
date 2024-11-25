@@ -34,15 +34,15 @@
   </nav>
   <!-- END nav -->
 
-  <section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('images/destination-12.jpg');"
+  <section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('images/place-9.jpg');"
     data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
     <div class="container">
       <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-center">
         <div class="col-md-9 ftco-animate pb-5 text-center">
-          <h1 class="mb-3 bread">Contact Us</h1>
-          <p class="breadcrumbs"><span class="mr-2"><a href="">Home <i class="ion-ios-arrow-forward"></i></a></span>
-            <span>Contact us <i class="ion-ios-arrow-forward"></i></span></p>
+          <h1 class="mb-3 bread">Liện hệ với chúng tôi</h1>
+          <p class="breadcrumbs"><span class="mr-2"><a href="">Trang chủ <i class="ion-ios-arrow-forward"></i></a></span>
+            <span>Liên hệ <i class="ion-ios-arrow-forward"></i></span></p>
         </div>
       </div>
     </div>
@@ -56,9 +56,8 @@
             <div class="icon d-flex align-items-center justify-content-center">
               <span class="icon-map-signs"></span>
             </div>
-            <h3 class="mb-2">Address</h3>
-            <p>Ole Sangale Road, off
-              Langata Road, in Madaraka Estate, Nairobi, Kenya.</p>
+            <h3 class="mb-2">Địa chủ</h3>
+            <p>484 Hòa Quý, Ngũ Hành Sơn, Đà Nẵng</p>
           </div>
         </div>
         <div class="col-md-3 d-flex">
@@ -66,8 +65,8 @@
             <div class="icon d-flex align-items-center justify-content-center">
               <span class="icon-phone2"></span>
             </div>
-            <h3 class="mb-2">Contact Number</h3>
-            <p><a href="tel://1234567920">+254712345678</a></p>
+            <h3 class="mb-2">Điện thoại</h3>
+            <p><a href="tel://1234567920">0336892064</a></p>
           </div>
         </div>
         <div class="col-md-3 d-flex">
@@ -75,8 +74,8 @@
             <div class="icon d-flex align-items-center justify-content-center">
               <span class="icon-paper-plane"></span>
             </div>
-            <h3 class="mb-2">Email Address</h3>
-            <p><a href="mailto:info@yoursite.com">info@yoursite.com</a></p>
+            <h3 class="mb-2">Email</h3>
+            <p><a href="mailto:info@yoursite.com">vyha@gmail.com</a></p>
           </div>
         </div>
         <div class="col-md-3 d-flex">
@@ -85,7 +84,7 @@
               <span class="icon-globe"></span>
             </div>
             <h3 class="mb-2">Website</h3>
-            <p><a href="#">safari.com</a></p>
+            <p><a href="#">vyhatravel.com</a></p>
           </div>
         </div>
       </div>
@@ -105,7 +104,7 @@
           <form action="#" method="POST" action="#" class="bg-light p-5 contact-form">
             @csrf
             <div class="form-group">
-              <label>Name</label>
+              <label>Tên</label>
               <input type="text" class="form-control {{ $errors->has('name') ? 'error' : '' }}" name="name" id="name">
 
               <!-- Error -->
@@ -131,7 +130,7 @@
             
 
             <div class="form-group">
-              <label>Subject</label>
+              <label>Tiêu đề</label>
               <input type="text" class="form-control {{ $errors->has('subject') ? 'error' : '' }}" name="subject"
                 id="subject">
 
@@ -143,7 +142,7 @@
             </div>
 
             <div class="form-group">
-              <label>Message</label>
+              <label>Tin nhắn</label>
               <textarea class="form-control {{ $errors->has('message') ? 'error' : '' }}" name="message" id="message"
                 rows="4"></textarea>
 
@@ -153,13 +152,13 @@
               </div>
               @endif
             </div>
-            <input type="submit" name="send" value="Submit" class="btn btn-dark btn-block">
+            <input type="submit" name="send" value="Gửi" class="btn btn-dark btn-block">
           </form>
 
         </div>
 
         <div class="col-md-6 d-flex">
-          <div id="map" class="bg-white"></div>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3835.734025012025!2d108.2506520754446!3d15.975260284690707!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3142108997dc971f%3A0x1295cb3d313469c9!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBDw7RuZyBuZ2jhu4cgVGjDtG5nIHRpbiB2w6AgVHJ1eeG7gW4gdGjDtG5nIFZp4buHdCAtIEjDoG4sIMSQ4bqhaSBo4buNYyDEkMOgIE7hurVuZw!5e0!3m2!1svi!2s!4v1732495979410!5m2!1svi!2s" width="600" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
       </div>
     </div>

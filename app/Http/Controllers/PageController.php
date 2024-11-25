@@ -13,9 +13,9 @@ class PageController extends Controller
     public function index() {
         $search = request()->query('search');
         if (request()->query('search')) {
-            $destinations = Destinations::where('title', 'LIKE', "%{$search}%")->simplePaginate(3);
+            $destinations = Destinations::where('title', 'LIKE', "%{$search}%")->paginate(3);
         } else {
-            $destinations = Destinations::simplePaginate(3);
+            $destinations = Destinations::paginate(6);
         }
 
         $categories = Category::limit(5)->get();
@@ -29,7 +29,7 @@ class PageController extends Controller
     }
 
     public function packages() {
-        $destinations = Destinations::paginate(3);
+        $destinations = Destinations::paginate(6);
         $tags = Tag::all();
         $categories = Category::all();
 
@@ -37,7 +37,7 @@ class PageController extends Controller
     }
 
     public function blog() {
-        $blogs = Blog::paginate(3);
+        $blogs = Blog::paginate(6);
         $tags = Tag::all();
         $categories = Category::all();
 
@@ -51,12 +51,14 @@ class PageController extends Controller
         return view('pages.contact', compact('tags', 'categories'));
     }
 
-    public function bali() {
-        $destinations = Destinations::all();
+
+    public function bali($id) {
+        $destinationOrther = Destinations::where('id', '!=', $id)->inRandomOrder()->limit(1)->first();
         $tags = Tag::all();
         $categories = Category::all();
+        $destination = Destinations::find($id);
 
-        return view('pages.bali', compact('destinations', 'tags', 'categories'));
+        return view('pages.bali', compact('destination', 'destinationOrther', 'tags', 'categories'));
     }
 
     public function cart() {

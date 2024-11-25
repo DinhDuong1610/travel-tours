@@ -25,6 +25,32 @@
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
+
+		<style>
+	
+			/* Màu nền tối cho pagination */
+	.pagination {
+			background-color: #F9AB30; /* Tương đương với bg-dark của Bootstrap */
+	}
+	
+	/* Màu chữ sáng cho các liên kết */
+	.pagination .page-link {
+			color: #F9AB30; /* Màu chữ sáng cho các trang */
+	}
+	
+	/* Thay đổi màu khi hover */
+	.pagination .page-item:hover .page-link {
+			background-color: #F9AB30; /* Màu xám nhạt hơn khi hover */
+			color: #ffffff; /* Màu chữ vẫn sáng khi hover */
+	}
+	
+	/* Thay đổi màu của trang đang được chọn */
+	.pagination .page-item.active .page-link {
+			background-color: #F9AB30; /* Màu xanh lam cho trang hiện tại */
+			color: #ffffff; /* Màu chữ sáng */
+			border: none;
+	}
+	</style>
   </head>
   <body>
 	  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
@@ -32,19 +58,19 @@
 	  </nav>
     <!-- END nav -->
     
-    <section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('images/place-4.jpg');" data-stellar-background-ratio="0.5">
+    <section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('images/place-5.jpg');" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
       <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-center">
           <div class="col-md-9 ftco-animate pb-5 text-center">
-            <h1 class="mb-3 bread">Places to Travel</h1>
-            <p class="breadcrumbs"><span class="mr-2"><a href="">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>About us <i class="ion-ios-arrow-forward"></i></span></p>
+            <h1 class="mb-3 bread">Địa điểm du lịch</h1>
+            <p class="breadcrumbs"><span class="mr-2"><a href="">Trang chủ <i class="ion-ios-arrow-forward"></i></a></span> <span>Điểm đến <i class="ion-ios-arrow-forward"></i></span></p>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="ftco-section">
+    {{-- <section class="ftco-section">
     	<div class="container">
     		<div class="row justify-content-center pb-4">
           <div class="col-md-12 heading-section text-center ftco-animate">
@@ -94,7 +120,7 @@
         	</div>
         </div>
     	</div>
-    </section>
+    </section> --}}
 
     {{-- <section class="ftco-section ftco-no-pb ftco-no-pt">
     	<div class="container">
@@ -159,7 +185,7 @@
     	<div class="container">
     		<div class="row justify-content-center pb-4">
           <div class="col-md-12 heading-section text-center ftco-animate">
-            <h2 class="mb-4">Tour Destination</h2>
+            <h2 class="mb-4 mt-4">Điểm đến du lịch</h2>
           </div>
         </div>
         <div class="row">
@@ -167,20 +193,20 @@
 			<div class="col-md-4 ftco-animate">
 				<div class="project-wrap">
 				<a href="#" class="img" style="background-image: url({{asset('/storage/' . $destination->image)}});">
-						<p>
+						{{-- <p>
 							{{$destination->category->name}}
-						</p>
+						</p> --}}
 					</a>
 					<div class="text p-4">
-						<span class="price">$300/person</span>
-						<span class="days">10 Days Tour</span>
+						<span class="price">{{ number_format($destination->pricing, 0, ',', '.') }}/người</span>
+						{{-- <span class="days">10 Days Tour</span> --}}
 						<h3><a href="#">
 								{{$destination->title}}
 							</a></h3>
 						<ul>
 							<li><span class="flaticon-shower"></span>2</li>
 							<li><span class="flaticon-king-size"></span>3</li>
-							<li><span class="flaticon-sun-umbrella"></span>Near Beach</li>
+							{{-- <li><span class="flaticon-sun-umbrella"></span>Near Beach</li> --}}
 						</ul>
 					</div>
 				</div>
@@ -188,8 +214,11 @@
 			@endforeach
         </div>
 		
-		{{ $destinations->links() }}
-
+		{{-- {{ $destinations->links() }} --}}
+					<!-- Pagination -->
+					<div class="d-flex justify-content-center">
+						{{ $destinations->links('pagination::bootstrap-4')}}
+					</div>
     	</div>
     </section>
 
@@ -280,3 +309,5 @@
     
   </body>
 </html>
+
+

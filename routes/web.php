@@ -44,7 +44,7 @@ Route::get('/blog', [PageController::class, 'blog'])->name('pages.blog');
 
 Route::get('/contact', [PageController::class, 'contact'])->name('pages.contact');
 
-Route::get('/bali', [PageController::class, 'bali'])->name('pages.bali');
+Route::get('/bali/{id}', [PageController::class, 'bali'])->name('pages.bali');
 
 Route::get('/cart', [PageController::class, 'cart'])->name('pages.cart');
 

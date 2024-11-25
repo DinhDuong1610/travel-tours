@@ -26,6 +26,31 @@
   <link rel="stylesheet" href="css/flaticon.css">
   <link rel="stylesheet" href="css/icomoon.css">
   <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    			/* Màu nền tối cho pagination */
+	.pagination {
+			background-color: #F9AB30; /* Tương đương với bg-dark của Bootstrap */
+	}
+	
+	/* Màu chữ sáng cho các liên kết */
+	.pagination .page-link {
+			color: #F9AB30; /* Màu chữ sáng cho các trang */
+	}
+	
+	/* Thay đổi màu khi hover */
+	.pagination .page-item:hover .page-link {
+			background-color: #F9AB30; /* Màu xám nhạt hơn khi hover */
+			color: #ffffff; /* Màu chữ vẫn sáng khi hover */
+	}
+	
+	/* Thay đổi màu của trang đang được chọn */
+	.pagination .page-item.active .page-link {
+			background-color: #F9AB30; /* Màu xanh lam cho trang hiện tại */
+			color: #ffffff; /* Màu chữ sáng */
+			border: none;
+	}
+  </style>
 </head>
 
 <body>
@@ -34,15 +59,15 @@
   </nav>
   <!-- END nav -->
 
-  <section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('images/destination-5.jpg');"
+  <section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('images/place-7.jpg');"
     data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
     <div class="container">
       <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-center">
         <div class="col-md-9 ftco-animate pb-5 text-center">
-          <h1 class="mb-3 bread">Travel Tips &amp; Blog</h1>
-          <p class="breadcrumbs"><span class="mr-2"><a href="">Home <i class="ion-ios-arrow-forward"></i></a></span>
-            <span>Blog <i class="ion-ios-arrow-forward"></i></span></p>
+          <h1 class="mb-3 bread">Sổ tay du lịch</h1>
+          <p class="breadcrumbs"><span class="mr-2"><a href="">Trang chủ <i class="ion-ios-arrow-forward"></i></a></span>
+            <span>Bài viết <i class="ion-ios-arrow-forward"></i></span></p>
         </div>
       </div>
     </div>
@@ -52,7 +77,7 @@
     <div class="container">
       <div class="row justify-content-center pb-4">
         <div class="col-md-12 heading-section text-center ftco-animate">
-          <h2 class="mb-4">Recent Blogs</h2>
+          <h2 class="mb-4">Bài viết gần đây</h2>
         </div>
       </div>
       <div class="row">
@@ -60,14 +85,14 @@
         <div class="col-md-4 ftco-animate">
           <div class="project-wrap">
             <a href="#" class="img" style="background-image: url({{asset('/storage/' . $blog->image)}});">
-              <p>
+              {{-- <p>
                 {{$blog->category->name}}
-              </p>
+              </p> --}}
             </a>
             <div class="text p-4">
-              <h3><a href="">
+              <h5><a href="">
                   {{$blog->title}}
-                </a></h3>
+                </a></h5>
             </div>
           </div>
         </div>
@@ -75,7 +100,11 @@
 
 
       </div>
-      {{ $blogs->links() }}
+      {{-- {{ $blogs->links() }} --}}
+      					<!-- Pagination -->
+					<div class="d-flex justify-content-center">
+						{{ $blogs->links('pagination::bootstrap-4')}}
+					</div>
   </section>
 
   <footer class="ftco-footer bg-bottom" style="background-image: url(images/footer-bg.jpg);">
