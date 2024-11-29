@@ -1,5 +1,5 @@
 <div class="container">
-  <a class="navbar-brand" href="{{route('pages.welcome')}}">VyHa<span>Travel tours</span></a>
+  <a class="navbar-brand" href="{{route('pages.welcome')}}"><img style="border-radius: 50%;" width="80px" height="80px" src="{{asset('images/logo.jpg')}}" alt=""></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="oi oi-menu"></span> Menu
   </button>
