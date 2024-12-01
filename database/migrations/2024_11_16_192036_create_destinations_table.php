@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('pricing')->nullable()->default(null);
             $table->string('title');
+            $table->string('slug');
             $table->text('description');
             $table->text('content');
             $table->string('image')->nullable();
@@ -22,6 +23,7 @@ return new class extends Migration
             $table->timestamp('published_at')->nullable();
             $table->softDeletes();
             $table->timestamps();
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
         });
     }
 

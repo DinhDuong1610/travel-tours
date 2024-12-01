@@ -56,7 +56,7 @@
             <div class="icon d-flex align-items-center justify-content-center">
               <span class="icon-map-signs"></span>
             </div>
-            <h3 class="mb-2">Địa chủ</h3>
+            <h3 class="mb-2">Địa chỉ</h3>
             <p>484 Hòa Quý, Ngũ Hành Sơn, Đà Nẵng</p>
           </div>
         </div>

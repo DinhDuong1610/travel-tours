@@ -13,11 +13,18 @@ return new class extends Migration
     {
         Schema::create('checkouts', function (Blueprint $table) {
             $table->id();
-            $table->string('firstname');
-            $table->string('lastname');
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('destination_id');
+            $table->string('name');
             $table->string('phone');
             $table->string('email');
+            $table->integer('number_of_passengers');
+            $table->date('departure_date');
+            $table->text('notes')->nullable();
+            $table->enum('status', ['pending', 'approved', 'declined'])->default('pending');
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('destination_id')->references('id')->on('destinations')->onDelete('cascade');
         });
     }
 

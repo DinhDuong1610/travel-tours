@@ -13,9 +13,11 @@ return new class extends Migration
     {
         Schema::create('destinations_tag', function (Blueprint $table) {
             $table->id();
-            $table->integer('destinations_id');
-            $table->integer('tag_id');
+            $table->unsignedBigInteger('destinations_id');
+            $table->unsignedBigInteger('tag_id');
             $table->timestamps();
+            $table->foreign('destinations_id')->references('id')->on('destinations')->onDelete('cascade');
+            $table->foreign('tag_id')->references('id')->on('tags')->onDelete('cascade');
         });
     }
 
