@@ -18,6 +18,10 @@ class Destinations extends Model
         return $this->belongsToMany(Tag::class);
     }
 
+    public function checkouts() {
+        return $this->hasMany(Checkout::class);
+    }
+
     public function deleteImage() {
         Storage::delele($this->image);
     }

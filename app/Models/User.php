@@ -49,4 +49,12 @@ class User extends Authenticatable
     public function isAdmin() {
         return $this->role == 'admin';
     }
+
+    public function checkouts() {
+        return $this->hasMany(Checkout::class);
+    }
+
+    public function contacts() {
+        return $this->hasMany(Contact::class);
+    }
 }
