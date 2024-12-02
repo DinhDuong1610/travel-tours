@@ -42,24 +42,24 @@
         <!-- Modal Delete Tag -->
         <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel">
             <div class="modal-dialog">
-                <form action="" method="POST" id="deleteTagForm">
+                <form action="{{route('admin.tag.destroy', $tag->id)}}" method="POST" id="deleteTagForm">
                     @csrf
                     @method('DELETE')
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="deleteModalLabel">Delete Tag</h5>
+                            <h5 class="modal-title" id="deleteModalLabel">Xóa tag</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
                             <p class="text-center font-weight-bold">
-                                Are you sure you want to delete this Tag?
+                                Bạn có chắc muốn xóa tag này không?
                             </p>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">No, go back</button>
-                            <button type="submit" class="btn btn-danger">Yes, Delete</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Không</button>
+                            <button type="submit" class="btn btn-danger">Có</button>
                         </div>
                     </div>
                 </form>
@@ -79,7 +79,7 @@
 <script>
     function handleDelete(id){
         var form = document.getElementById('deleteTagForm');
-        form.action = '/tags/' + id;
+
         $('#deleteModal').modal('show');
     }
 </script>

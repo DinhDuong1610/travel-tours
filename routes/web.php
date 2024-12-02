@@ -33,6 +33,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::post('/tag/store', [TagController::class, 'store'])->name('admin.tag.store');
     Route::get('/tag/{id}/edit', [TagController::class, 'edit'])->name('admin.tag.edit');
     Route::put('/tag/{id}/update', [TagController::class, 'update'])->name('admin.tag.update');
+    Route::delete('/tag/{id}/destroy', [TagController::class, 'destroy'])->name('admin.tag.destroy');
     
     Route::get('/blog', [BlogController::class, 'index'])->name('admin.blog.index');
     Route::get('/blog/create', [BlogController::class, 'create'])->name('admin.blog.create');

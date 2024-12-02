@@ -38,4 +38,10 @@ class TagController extends Controller
         
         return redirect()->route('admin.tag.index')->with('success', 'Cập nhật tag thành công!');
     }   
+
+    public function destroy($id) {
+        $tag = Tag::find($id);
+        $tag->delete();
+        return redirect()->route('admin.tag.index')->with('success', 'Xóa tag thành công!');
+    }
 }
