@@ -23,6 +23,7 @@ class CreateBlogRequest extends FormRequest
     {
         return [
             'title' => 'required',
+            'slug' => 'required',
             'description' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'content' => 'required',
