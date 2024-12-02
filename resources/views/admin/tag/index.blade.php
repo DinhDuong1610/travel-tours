@@ -24,7 +24,7 @@
                     <td>{{ $tag->name }}</td>
                     <td class="text-center">{{ $tag->Destinations()->count() }}</td>
                     <td class="text-center">
-                        <a href="#" class="btn btn-info btn-sm"><i class="fa-solid fa-pen-to-square"></i></a>
+                        <a href="{{route('admin.tag.edit', $tag->id)}}" class="btn btn-info btn-sm"><i class="fa-solid fa-pen-to-square"></i></a>
                     </td>
                     <td class="text-center">
                         <button class="btn btn-danger btn-sm" onclick="handleDelete({{$tag->id}})"><i class="fa-solid fa-trash"></i></button>

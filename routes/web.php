@@ -31,6 +31,8 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::get('/tag', [TagController::class, 'index'])->name('admin.tag.index');
     Route::get('/tag/create', [TagController::class, 'create'])->name('admin.tag.create');
     Route::post('/tag/store', [TagController::class, 'store'])->name('admin.tag.store');
+    Route::get('/tag/{id}/edit', [TagController::class, 'edit'])->name('admin.tag.edit');
+    Route::put('/tag/{id}/update', [TagController::class, 'update'])->name('admin.tag.update');
     
     Route::get('/blog', [BlogController::class, 'index'])->name('admin.blog.index');
     Route::get('/blog/create', [BlogController::class, 'create'])->name('admin.blog.create');

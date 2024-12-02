@@ -14,6 +14,7 @@
                 <tr>
                     <th>Tên</th>
                     <th class="text-center">Số điểm đến</th>
+                    <th class="text-center">Số bài viết</th>
                     <th colspan="2" class="text-center">Thao tác</th>
                 </tr>
             </thead>
@@ -23,6 +24,7 @@
                 <tr>
                     <td>{{ $category->name }}</td>
                     <td class="text-center">{{ $category->Destinations()->count() }}</td>
+                    <td class="text-center">{{ $category->Blogs()->count() }}</td>
                     <td class="text-center">
                         <a href="{{route('admin.category.edit', $category->id)}}" class="btn btn-info btn-sm"><i class="fa-solid fa-pen-to-square"></i></a>
                     </td>

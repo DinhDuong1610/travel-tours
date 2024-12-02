@@ -4,14 +4,15 @@
 
 <div class="card card-default shadow-sm">
     <div class="card-header bg-dark text-white d-flex justify-content-between">
-        <strong>Thêm nhãn</strong>
+        <strong>Sửa nhãn</strong>
     </div>
 
     <div class="card-body">
         @include('error')
 
-        <form action="{{ route('admin.tag.store') }}" method="POST">
+        <form action="{{ route('admin.tag.update', ['id' => $tag->id ]) }}" method="POST">
             @csrf
+            @method('PUT')
 
             <div class="form-group">
                 <label for="name" class="font-weight-bold">Tên nhãn</label>
@@ -21,7 +22,7 @@
             <div class="form-group">
                 <div class="d-flex justify-content-center">
                     <button class="btn btn-dark">
-                        Thêm nhãn
+                        Cập nhật nhãn
                     </button>
                 </div>
             </div>
