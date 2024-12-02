@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Category\CreateCategoryRequest;
+use App\Http\Requests\Category\UpdateCategoryRequest;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -42,7 +43,7 @@ class CategoryController extends Controller
         return view('admin.category.edit', compact('category'));
     }
 
-    public function update(Request $request, $id) {
+    public function update(UpdateCategoryRequest $request, $id) {
         $category = Category::find($id);
         $category->name = $request->name;
         $category->slug = $request->slug;
@@ -59,5 +60,17 @@ class CategoryController extends Controller
 
         $category->save();
         return redirect()->route('admin.category.index')->with('success', 'Cập nhật danh mục thành công!');
+    }
+
+    public function destroy($id) {
+        $category = Category::find($id);
+        
+        if($category->destinations()->count() > 0) {
+            return redirect()->route('admin.category.index')->with('error', 'Danh mục nay khong the xoa!');
+        } 
+
+        $category->delete();
+
+        return redirect()->route('admin.category.index')->with('success', 'Xóa danh mục thành công!');
     }
 }
