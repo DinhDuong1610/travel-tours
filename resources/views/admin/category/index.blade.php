@@ -24,7 +24,7 @@
                     <td>{{ $category->name }}</td>
                     <td class="text-center">{{ $category->Destinations()->count() }}</td>
                     <td class="text-center">
-                        <a href="#" class="btn btn-info btn-sm"><i class="fa-solid fa-pen-to-square"></i></a>
+                        <a href="{{route('admin.category.edit', $category->id)}}" class="btn btn-info btn-sm"><i class="fa-solid fa-pen-to-square"></i></a>
                     </td>
                     <td class="text-center">
                         <button class="btn btn-danger btn-sm" onclick="handleDelete({{$category->id}})"><i class="fa-solid fa-trash"></i></button>

@@ -36,4 +36,28 @@ class CategoryController extends Controller
 
         return redirect()->route('admin.category.index')->with('success', 'Tạo danh mục thành công!');
     }
+
+    public function edit($id) {
+        $category = Category::find($id);
+        return view('admin.category.edit', compact('category'));
+    }
+
+    public function update(Request $request, $id) {
+        $category = Category::find($id);
+        $category->name = $request->name;
+        $category->slug = $request->slug;
+
+        if($request->slug) {
+            $category->slug = $request->slug;
+        } else {
+            $category->slug = Str::slug($request->name);
+        }
+
+        if(Category::where('slug', $category->slug)->exists()) {
+            $category->slug = $category->slug . '-' . uniqid();
+        }
+
+        $category->save();
+        return redirect()->route('admin.category.index')->with('success', 'Cập nhật danh mục thành công!');
+    }
 }

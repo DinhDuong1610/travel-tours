@@ -4,14 +4,15 @@
 
 <div class="card card-default shadow-sm">
    <div class="card-header bg-dark text-white d-flex justify-content-between">
-      <strong>Thêm danh mục</strong>
+      <strong>Sửa danh mục</strong>
    </div>
 
    <div class="card-body">
       @include('error')
 
-      <form action="{{ route('admin.category.store') }}" method="POST" enctype="multipart/form-data">
+      <form action="{{route('admin.category.update', ['id' => $category->id])}}" method="POST" enctype="multipart/form-data">
          @csrf
+         @method('PUT')
 
          <div class="form-group">
             <label for="name" class="font-weight-bold">Tên danh mục</label>
@@ -26,7 +27,7 @@
          <div class="form-group">
             <div class="d-flex justify-content-center">
                <button class="btn btn-dark">
-                  Thêm danh mục
+                  Cập nhật danh mục
                </button>
             </div>
          </div>

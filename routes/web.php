@@ -20,6 +20,8 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::get('/category', [CategoryController::class, 'index'])->name('admin.category.index');
     Route::get('/category/create', [CategoryController::class, 'create'])->name('admin.category.create');
     Route::post('/category/store', [CategoryController::class, 'store'])->name('admin.category.store');
+    Route::get('/category/{id}/edit', [CategoryController::class, 'edit'])->name('admin.category.edit');
+    Route::put('/category/{id}/update', [CategoryController::class, 'update'])->name('admin.category.update');
 
     Route::get('/destinations', [DestinationsController::class, 'index'])->name('admin.destinations.index');
     Route::get('/destinations/create', [DestinationsController::class, 'create'])->name('admin.destinations.create');
