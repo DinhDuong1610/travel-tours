@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
 
@@ -18,7 +18,12 @@
 
          <div class="form-group">
             <label for="name" class="font-weight-bold">Tên danh mục</label>
-            <input type="text" id="name" class="form-control" name="name" value="{{ isset($category) ? $category->name : '' }}">
+            <input type="text" id="name" class="form-control" name="name" value="{{ isset($category) ? $category->name : '' }}" onkeyup="generateSlug()">
+         </div>
+
+         <div class="form-group">
+            <label for="slug" class="font-weight-bold">Slug</label>
+            <input type="text" id="slug" class="form-control" name="slug" value="{{ isset($category) ? $category->slug : '' }}" readonly>
          </div>
 
          <div class="form-group">
@@ -32,6 +37,25 @@
    </div>
 </div>
 
+@endsection
+
+@section('scripts')
+<script>
+   function generateSlug() {
+      var name = document.getElementById('name').value;
+      var slug = name.toLowerCase()
+                     .replace(/[áàảãạâấầẩẫậăắằẳẵặ]/g, 'a')
+                     .replace(/[éèẻẽẹêếềểễệ]/g, 'e')
+                     .replace(/[íìỉĩị]/g, 'i')
+                     .replace(/[óòỏõọôốồổỗộơớờởỡợ]/g, 'o')
+                     .replace(/[úùủũụưứừửữự]/g, 'u')
+                     .replace(/[ýỳỷỹỵ]/g, 'y')
+                     .replace(/[^a-z0-9\s-]/g, '') 
+                     .replace(/\s+/g, '-')        
+                     .replace(/-+/g, '-');         
+      document.getElementById('slug').value = slug;
+   }
+</script>
 @endsection
 
 @section('css')
@@ -97,3 +121,5 @@
    }
 </style>
 @endsection
+
+
