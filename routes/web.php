@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DashBoardController;
 use App\Http\Controllers\DestinationsController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\TagController;
@@ -9,15 +10,13 @@ use App\Http\Controllers\UserController;
 use App\Http\Middleware\AuthAdmin;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 Auth::routes();
 
 Route::middleware(['auth', AuthAdmin::class])->prefix('admin')->group(function () {
 
-    Route::get('/home', function () {
-        return view('pages.home');
-    });
+    Route::get('/', [DashBoardController::class, 'index'])->name('admin.dashboard.index');
     
     Route::get('/category', [CategoryController::class, 'index'])->name('admin.category.index');
     Route::get('/category/create', [CategoryController::class, 'create'])->name('admin.category.create');
