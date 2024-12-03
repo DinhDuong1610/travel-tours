@@ -5,11 +5,11 @@
 <div class="card card-default" style="min-height: calc(100vh - 100px);">
     <div class="card-header bg-dark text-white d-flex justify-content-between">
         <strong>Điểm đến</strong>
-        <a href="{{route('admin.destinations.create')}}" class="btn btn-light">Thêm điểm đến</a>
+        <a href="{{ route('admin.destinations.create') }}" class="btn btn-light">Thêm điểm đến</a>
     </div>
 
     <div class="card-body">
-        @if ($destinations->count()>0)
+        @if ($destinations->count() > 0)
         <table class="table table-striped table-bordered table-hover">
             <thead class="thead-dark">
                 <tr>
@@ -24,14 +24,14 @@
                 @foreach ($destinations as $destination)
                 <tr>
                     <td class="text-center">
-                        <img src="{{asset('/storage/' . $destination->image)}}" style="width: 150px; height: 80px;"
+                        <img src="{{ asset('/storage/' . $destination->image) }}" style="width: 150px; height: 80px;"
                             class="img-thumbnail" alt="responsive image">
                     </td>
                     <td>
                         {{ $destination->title }}
                     </td>
                     <td>
-                        <a href="#" class="text-primary font-weight-bold">{{$destination->category->name}}</a>
+                        <a href="#" class="text-primary font-weight-bold">{{ $destination->category->name }}</a>
                     </td>
                     <td class="text-center">
                         {{ number_format($destination->pricing, 0, ',', '.') }} VND
@@ -47,19 +47,13 @@
                     </td>
                     @else
                     <td class="text-center">
-                        <a href="{{route('admin.destinations.edit', $destination->id)}}" class="btn btn-info btn-sm"><i class="fa-solid fa-pen-to-square"></i></a>
+                        <a href="{{ route('admin.destinations.edit', $destination->id) }}" class="btn btn-info btn-sm"><i class="fa-solid fa-pen-to-square"></i></a>
                     </td>
                     @endif
 
                     <td class="text-center">
-                        <form action="#" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger btn-sm">
-                                {{-- {{$destination->trashed()? 'Delete':'Trash'}} --}}
-                                <i class="fa-solid fa-trash"></i>
-                            </button>
-                        </form>
+                        <!-- Trigger the modal with a button -->
+                        <button class="btn btn-danger btn-sm" onclick="handleDelete({{ $destination->id }})"><i class="fa-solid fa-trash"></i></button>
                     </td>
                 </tr>
                 @endforeach
@@ -68,7 +62,34 @@
 
         <!-- Pagination -->
         <div class="d-flex justify-content-center">
-            {{ $destinations->links('pagination::bootstrap-4')}}
+            {{ $destinations->links('pagination::bootstrap-4') }}
+        </div>
+
+        <!-- Modal Delete Destination -->
+        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel">
+            <div class="modal-dialog">
+                <form action="{{ route('admin.destinations.destroy', $destination->id) }}" method="POST" id="deleteDestinationForm">
+                    @csrf
+                    @method('DELETE')
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="deleteModalLabel">Xóa điểm đến</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p class="text-center font-weight-bold">
+                                Bạn có chắc muốn xóa điểm đến này không?
+                            </p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Không</button>
+                            <button type="submit" class="btn btn-danger">Có</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
         
         @else
@@ -79,124 +100,82 @@
 
 @endsection
 
-@section('css') 
-    <style>
+@section('scripts')
+<script>
+    function handleDelete(id) {
+        var form = document.getElementById('deleteDestinationForm');
+        // Update the form action to the correct destination id
+        // form.action = '/admin/destinations/' + id;
+        // Show the modal
+        $('#deleteModal').modal('show');
+    }
+</script>
+@endsection
 
-.card {
+@section('css')
+<style>
+   /* Thêm một số style cho modal */
+    .modal-content {
         border-radius: 0.375rem;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     }
 
-    .card-header {
-        background-color: #007bff;
+    .modal-header {
+        background-color: #343A40;
         color: white;
         font-weight: 600;
-        font-size: 1.25rem;
-        border-radius: 0.375rem 0.375rem 0 0;
     }
 
-    .table {
-        border-collapse: collapse;
-        width: 100%;
-    }
-
-    .table th, .table td {
-        text-align: left;
-        padding: 15px;
-        vertical-align: middle;
-    }
-
-    .table-striped tbody tr:nth-of-type(odd) {
-        background-color: #f9f9f9;
-    }
-
-    .table-bordered {
-        border: 1px solid #dee2e6;
-    }
-
-    .table-hover tbody tr:hover {
-        background-color: #e9ecef;
-    }
-
-    .table th {
-        background-color: #343a40;
-        color: white;
-    }
-
-    .btn-lg {
-        font-size: 1.2rem;
-        padding: 0.75rem 1.5rem;
-    }
-
-    .btn-info {
-        color: #ffffff;
-        background-color: #17a2b8;
-        border-color: #17a2b8;
-    }
-
-    .btn-info:hover {
-        background-color: #138496;
-        border-color: #117a8b;
-    }
-
-    .btn-danger {
-        background-color: #dc3545;
-        border-color: #dc3545;
-    }
-
-    .btn-danger:hover {
-        background-color: #c82333;
-        border-color: #bd2130;
-    }
-
-    .btn-sm {
-        font-size: 0.875rem;
-        padding: 0.25rem 0.5rem;
-    }
-
-    .table tbody tr:hover {
-        background-color: #f1f1f1;
-        cursor: pointer;
+    .modal-footer {
+        background-color: #f8f9fa;
     }
 
     .text-center {
         text-align: center;
     }
 
-    .img-thumbnail {
-        border-radius: 0.375rem;
+    .font-weight-bold {
+        font-weight: bold;
     }
 
+    /* Thêm chút padding cho các thành phần chính */
     .card-body {
         padding: 20px;
     }
 
+    /* Hover effects for rows */
+    .table tbody tr:hover {
+        background-color: #f1f1f1;
+        cursor: pointer;
+    }
+
+    /* Cải thiện ảnh */
+    .img-thumbnail {
+        border-radius: 0.375rem;
+    }
+
+    /* Alert style */
     .alert {
         border-radius: 0.375rem;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     }
 
-    /* Màu nền tối cho pagination */
-.pagination {
-    background-color: #343a40; /* Tương đương với bg-dark của Bootstrap */
-}
+    .pagination {
+        background-color: #343a40; /* Tương đương với bg-dark của Bootstrap */
+    }
 
-/* Màu chữ sáng cho các liên kết */
-.pagination .page-link {
-    color: #3b3b3b; /* Màu chữ sáng cho các trang */
-}
+    .pagination .page-link {
+        color: #3b3b3b;
+    }
 
-/* Thay đổi màu khi hover */
-.pagination .page-item:hover .page-link {
-    background-color: #495057; /* Màu xám nhạt hơn khi hover */
-    color: #ffffff; /* Màu chữ vẫn sáng khi hover */
-}
+    .pagination .page-item:hover .page-link {
+        background-color: #495057;
+        color: #ffffff;
+    }
 
-/* Thay đổi màu của trang đang được chọn */
-.pagination .page-item.active .page-link {
-    background-color: #343a40; /* Màu xanh lam cho trang hiện tại */
-    color: #ffffff; /* Màu chữ sáng */
-    border: none;
-}
-    </style>
+    .pagination .page-item.active .page-link {
+        background-color: #343a40;
+        color: #ffffff;
+        border: none;
+    }
+</style>
 @endsection

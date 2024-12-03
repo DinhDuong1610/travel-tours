@@ -41,6 +41,8 @@ class DestinationsController extends Controller
             $destination->slug = Str::slug($request->title);
         }
 
+        $destination->save();
+
         if($request->tags){
             $destination->tags()->attach($request->tags);
         }
@@ -78,6 +80,8 @@ class DestinationsController extends Controller
             $destination->slug = Str::slug($request->title);
         }
 
+        $destination->save();
+
         if($request->tags){
             $destination->tags()->sync($request->tags);
         }
@@ -85,6 +89,12 @@ class DestinationsController extends Controller
         $destination->save();
 
         return redirect()->route('admin.destinations.index')->with('success', 'Cập nhật điểm đến thành công!');
+    }
+
+    public function destroy($id) {
+        $destination = Destinations::find($id);
+        $destination->delete();
+        return redirect()->route('admin.destinations.index')->with('success', 'Xóa điểm đến thành công!');
     }
     
 }
