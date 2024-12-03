@@ -6,6 +6,7 @@ use App\Http\Requests\Blog\CreateBlogRequest;
 use App\Models\Blog;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class BlogController extends Controller
 {
@@ -29,7 +30,15 @@ class BlogController extends Controller
         $blog->category_id = $request->category;
         $blog->image = $image;
         $blog->published_at = $request->published_at;
+
+        if($request->slug){
+            $blog->slug = $request->slug;
+        } else {
+            $blog->slug = Str::slug($request->title);
+        }
+
         $blog->save();
+        
         return redirect()->route('admin.blog.index')->with('success', 'Blog created successfully');
     }
 }   

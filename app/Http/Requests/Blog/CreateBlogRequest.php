@@ -22,8 +22,8 @@ class CreateBlogRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required',
-            'slug' => 'required',
+            'title' => 'required|string|max:255|unique:blogs,title',
+            'slug' => 'required|unique:blogs,slug',
             'description' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'content' => 'required',

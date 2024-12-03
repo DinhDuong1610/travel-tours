@@ -20,7 +20,13 @@
             <!-- Title -->
             <div class="form-group">
                 <label for="title">Tiêu đề</label>
-                <input type="text" class="form-control" name="title" id="title" value="{{ isset($blog) ? $blog->title : '' }}">
+                <input type="text" class="form-control" name="title" id="title" value="{{ isset($blog) ? $blog->title : '' }}" onkeyup="generateSlug()">
+            </div>
+
+            <!-- Slug -->
+            <div class="form-group">
+                <label for="slug">Slug</label>
+                <input type="text" class="form-control" name="slug" id="slug" value="{{ isset($blog) ? $blog->slug : '' }}" readonly>
             </div>
 
             <!-- Description -->
@@ -117,6 +123,15 @@
     $(document).ready(function() {
         $('.tags-selector').select2();
     });
+
+    function generateSlug() {
+        var title = document.getElementById('title').value;
+        var slug = title.toLowerCase()
+            .replace(/[^a-z0-9\s-]/g, '')  
+            .replace(/\s+/g, '-')           
+            .replace(/-+/g, '-');           
+        document.getElementById('slug').value = slug;
+    }
 
     document.getElementById('image').addEventListener('change', function(event) {
         var file = event.target.files[0];
