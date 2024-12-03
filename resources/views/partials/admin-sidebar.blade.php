@@ -20,10 +20,7 @@
         </li>
         @if (auth()->user()->isAdmin())
             <li class="list-group-item">
-                <a href="#"><i class="sidebar-icon fas fa-users"></i> Người dùng</a>
-            </li>
-            <li class="list-group-item">
-                <a href="#"><i class="sidebar-icon fas fa-users"></i> Vai trò</a>
+                <a href="{{ Route('admin.user.index') }}"><i class="sidebar-icon fas fa-users"></i> Người dùng</a>
             </li>
         @endif
     </ul>

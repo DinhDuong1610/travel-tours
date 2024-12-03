@@ -5,13 +5,15 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DestinationsController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\TagController;
+use App\Http\Controllers\UserController;
+use App\Http\Middleware\AuthAdmin;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 
 Auth::routes();
 
-Route::middleware(['auth'])->prefix('admin')->group(function () {
+Route::middleware(['auth', AuthAdmin::class])->prefix('admin')->group(function () {
 
     Route::get('/home', function () {
         return view('pages.home');
@@ -44,6 +46,10 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::get('/blog/{id}/edit', [BlogController::class, 'edit'])->name('admin.blog.edit');
     Route::put('/blog/{id}/update', [BlogController::class, 'update'])->name('admin.blog.update');
     Route::delete('/blog/{id}/destroy', [BlogController::class, 'destroy'])->name('admin.blog.destroy');
+
+    Route::get('/user', action: [UserController::class, 'index'])->name('admin.user.index');
+    Route::put('/user/{id}/updateRole', [UserController::class, 'updateRole'])->name('admin.user.updateRole');
+    Route::delete('/user/{id}/destroy', [UserController::class, 'destroy'])->name('admin.user.destroy');
 });
 
 Route::get('/', [PageController::class, 'index'])->name('pages.welcome');

@@ -3479,6 +3479,7 @@ input[type="button"].btn-block {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  align-items: center;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
@@ -8194,8 +8195,8 @@ h1, h2, h3, h4, h5,
       font-size: 16px;
       letter-spacing: .1em; }
     .ftco-navbar-light.scrolled .nav-link {
-      padding-top: 1rem !important;
-      padding-bottom: 1rem !important;
+      padding-top: 1rem ;
+      padding-bottom: 1rem ;
       color: #000000 !important; }
       .ftco-navbar-light.scrolled .nav-link.active {
         color: #f9ab30 !important; }

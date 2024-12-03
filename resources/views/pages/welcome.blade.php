@@ -2,7 +2,7 @@
 
 @section('page')
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-	@include('partials.nav');
+	@include('partials.nav')
 </nav>
 <!-- END nav -->
 
