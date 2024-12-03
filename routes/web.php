@@ -65,6 +65,6 @@ Route::get('destination/detail/{slug}', [PageController::class, 'detail'])->name
 
 Route::get('/cart', [PageController::class, 'cart'])->name('pages.cart');
 
-Route::get('/checkout', [PageController::class, 'checkout'])->name('pages.checkout');
+Route::get('/checkout/{id}', [PageController::class, 'checkout'])->name('pages.checkout');
 
 Route::get('/stripe', [PageController::class, 'stripe'])->name('pages.stripe');

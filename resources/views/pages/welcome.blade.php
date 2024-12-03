@@ -20,7 +20,7 @@
 	</div>
 </div>
 
-<section class="ftco-section ftco-no-pb ftco-no-pt">
+{{-- <section class="ftco-section ftco-no-pb ftco-no-pt">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
@@ -31,7 +31,6 @@
 								<div class="form-group">
 									<label for="#">Điểm đến</label>
 									<div class="form-field">
-										{{-- <div class="icon"><span class="ion-ios-search"></span></div> --}}
 										<input type="text" class="form-control" placeholder="Địa điểm">
 									</div>
 								</div>
@@ -49,7 +48,7 @@
 			</div>
 		</div>
 	</div>
-</section>
+</section> --}}
 
 <section class="ftco-section services-section bg-light">
 	<div class="container">

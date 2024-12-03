@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Safari</title>
+    <title>Destination</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
@@ -192,7 +192,7 @@
         	@foreach ($destinations as $destination)
 			<div class="col-md-4 ftco-animate">
 				<div class="project-wrap">
-				<a href="#" class="img" style="background-image: url({{asset('/storage/' . $destination->image)}});">
+				<a href="{{route('pages.detail', ['slug' => $destination->slug])}}" class="img" style="background-image: url({{asset('/storage/' . $destination->image)}});">
 						{{-- <p>
 							{{$destination->category->name}}
 						</p> --}}
@@ -200,7 +200,7 @@
 					<div class="text p-4">
 						<span class="price">{{ number_format($destination->pricing, 0, ',', '.') }}/người</span>
 						{{-- <span class="days">10 Days Tour</span> --}}
-						<h3><a href="#">
+						<h3><a href="{{route('pages.detail', ['slug' => $destination->slug])}}">
 								{{$destination->title}}
 							</a></h3>
 						<ul>
@@ -222,67 +222,7 @@
     	</div>
     </section>
 
-    <footer class="ftco-footer bg-bottom" style="background-image: url(images/footer-bg.jpg);">
-      <div class="container">
-        <div class="row mb-5">
-          <div class="col-md">
-            <div class="ftco-footer-widget mb-4">
-              <h2 class="ftco-heading-2">Safari</h2>
-              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-              <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
-                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-md">
-            <div class="ftco-footer-widget mb-4 ml-md-5">
-              <h2 class="ftco-heading-2">Categories</h2>
-					@foreach ($categories as $category)
-					<div class="col-6">
-						<a href="#">
-							{{$category->name}}
-						</a>
-					</div>
-					@endforeach
-            </div>
-          </div>
-          <div class="col-md">
-             <div class="ftco-footer-widget mb-4">
-              <h2 class="ftco-heading-2">Tags</h2>
-					@foreach ($tags as $tag)
-					<div class="col-6">
-						<a href="#">
-							{{$tag->name}}
-						</a>
-					</div>
-					@endforeach
-            </div>
-          </div>
-          <div class="col-md">
-            <div class="ftco-footer-widget mb-4">
-            	<h2 class="ftco-heading-2">Have any Questions?</h2>
-            	<div class="block-23 mb-3">
-	              <ul>
-	                <li><span class="icon icon-map-marker"></span><span class="text">Ole Sangale Road, off
-									Langata Road, in Madaraka Estate, Nairobi, Kenya.</span></li>
-	                <li><a href="#"><span class="icon icon-phone"></span><span class="text">+254712345678</span></a></li>
-	                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@yourdomain.com</span></a></li>
-	              </ul>
-	            </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12 text-center">
-
-            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved</p>
-          </div>
-        </div>
-      </div>
-    </footer>
+    @include('partials.page-footer')
     
   
 
