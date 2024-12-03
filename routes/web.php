@@ -43,6 +43,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::post('blog/store', [BlogController::class, 'store'])->name('admin.blog.store');
     Route::get('/blog/{id}/edit', [BlogController::class, 'edit'])->name('admin.blog.edit');
     Route::put('/blog/{id}/update', [BlogController::class, 'update'])->name('admin.blog.update');
+    Route::delete('/blog/{id}/destroy', [BlogController::class, 'destroy'])->name('admin.blog.destroy');
 });
 
 Route::get('/', [PageController::class, 'index'])->name('pages.welcome');

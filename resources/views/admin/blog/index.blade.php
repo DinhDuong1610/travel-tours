@@ -43,14 +43,9 @@
                     @endif
 
                     <td class="text-center">
-                        <form action="#" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger btn-sm">
-                                {{-- {{ $blog->trashed() ? 'Delete' : 'Trash' }} --}}
-                                <i class="fa-solid fa-trash"></i>
-                            </button>
-                        </form>
+                        <button type="button" class="btn btn-danger btn-sm" onclick="handleDelete({{ $blog->id }})">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
                     </td>
                 </tr>
                 @endforeach
@@ -60,6 +55,31 @@
         <!-- Pagination -->
         <div class="d-flex justify-content-center">
             {{ $blogs->links('pagination::bootstrap-4') }}
+        </div>
+
+        <!-- Modal Xác nhận xóa -->
+        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="deleteModalLabel">Xác nhận xóa</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Bạn có chắc chắn muốn xóa bài viết này không?
+                    </div>
+                    <div class="modal-footer">
+                        <form id="deleteBlogForm" action="{{route('admin.blog.destroy', $blog->id)}}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+                            <button type="submit" class="btn btn-danger">Xóa</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
         @else
         <h3 class="text-center">Chưa có bài viết nào</h3>
@@ -74,7 +94,7 @@
 <script>
     function handleDelete(id){
         var form = document.getElementById('deleteBlogForm');
-        form.action = '/blogs/' + id;
+        // form.action = '/blogs/' + id;
         $('#deleteModal').modal('show');
     }
 </script>
@@ -90,7 +110,7 @@
 }
 
 .card-header {
-    background-color: #007bff;
+    background-color: #343a40;
     color: white;
     font-weight: 600;
     font-size: 1.25rem;

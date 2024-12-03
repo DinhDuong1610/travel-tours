@@ -73,6 +73,12 @@ class BlogController extends Controller
 
         return redirect()->route('admin.blog.index')->with('success', 'Cập nhật bài viết thành công!');
     }
+
+    public function destroy($id) {
+        $blog = Blog::find($id);
+        $blog->delete();
+        return redirect()->route('admin.blog.index')->with('success', 'Xóa bài viết thành công!');
+    }
 }   
 
 
