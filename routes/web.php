@@ -42,6 +42,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::get('/blog/create', [BlogController::class, 'create'])->name('admin.blog.create');
     Route::post('blog/store', [BlogController::class, 'store'])->name('admin.blog.store');
     Route::get('/blog/{id}/edit', [BlogController::class, 'edit'])->name('admin.blog.edit');
+    Route::put('/blog/{id}/update', [BlogController::class, 'update'])->name('admin.blog.update');
 });
 
 Route::get('/', [PageController::class, 'index'])->name('pages.welcome');

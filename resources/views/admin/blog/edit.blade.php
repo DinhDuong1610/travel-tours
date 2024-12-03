@@ -10,7 +10,7 @@
     <div class="card-body">
         @include('error')
 
-        <form action="{{ route('admin.blog.store') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('admin.blog.update', ['id' => $blog->id]) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Blog\CreateBlogRequest;
+use App\Http\Requests\Blog\UpdateBlogRequest;
 use App\Models\Blog;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -39,7 +40,7 @@ class BlogController extends Controller
 
         $blog->save();
 
-        return redirect()->route('admin.blog.index')->with('success', 'Blog created successfully');
+        return redirect()->route('admin.blog.index')->with('success', 'Thêm bài viết thành công!');
     }
 
     public function edit($id) {
@@ -47,6 +48,32 @@ class BlogController extends Controller
         $categories = Category::select('id', 'name')->get();
         return view('admin.blog.edit', compact('blog', 'categories'));
     }
+
+    public function update(UpdateBlogRequest $request, $id) {
+        $blog = Blog::find($id);
+
+        $blog->title = $request->title;
+        $blog->description = $request->description;
+        $blog->content = $request->content;
+        $blog->category_id = $request->category;
+        $blog->published_at = $request->published_at;
+
+        if($request->slug){
+            $blog->slug = $request->slug;
+        } else {
+            $blog->slug = Str::slug($request->title);
+        }
+
+        if($request->hasFile('image')) {
+            $image = $request->image->store('blog', 'public');
+            $blog->image = $image;
+        }
+
+        $blog->save();
+
+        return redirect()->route('admin.blog.index')->with('success', 'Cập nhật bài viết thành công!');
+    }
 }   
+
 
 

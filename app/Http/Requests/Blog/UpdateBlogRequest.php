@@ -24,8 +24,8 @@ class UpdateBlogRequest extends FormRequest
         $id = $this->route('id');
 
         return [
-            'title' => 'required|string|max:255|unique:blogs,title' . $id,
-            'slug' => 'required|unique:blogs,slug' . $id,
+            'title' => 'required|string|max:255|unique:blogs,title,' . $id,
+            'slug' => 'required|unique:blogs,slug,' . $id,
             'description' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'content' => 'required',
