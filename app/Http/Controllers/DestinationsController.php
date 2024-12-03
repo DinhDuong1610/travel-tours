@@ -53,4 +53,13 @@ class DestinationsController extends Controller
 
         return redirect()->route('admin.destinations.index')->with('success', 'Tạo điểm đến thành công!');
     }
+
+    public function edit($id) {
+        $destination = Destinations::find($id);
+        $categories = Category::all();
+        $tags = Tag::all();
+        return view('admin.destinations.edit', compact('destination', 'categories', 'tags'));
+    }
+
+    
 }

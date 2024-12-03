@@ -47,7 +47,7 @@
                     </td>
                     @else
                     <td class="text-center">
-                        <a href="#" class="btn btn-info btn-sm"><i class="fa-solid fa-pen-to-square"></i></a>
+                        <a href="{{route('admin.destinations.edit', $destination->id)}}" class="btn btn-info btn-sm"><i class="fa-solid fa-pen-to-square"></i></a>
                     </td>
                     @endif
 

@@ -4,7 +4,7 @@
 
 <div class="card card-default card-dark">
     <div class="card-header bg-dark text-white d-flex justify-content-between">
-        <strong>Thêm điểm đến</strong>
+        <strong>Sửa điểm đến</strong>
     </div>
 
     <div class="card-body">
@@ -12,6 +12,10 @@
 
         <form action="{{ route('admin.destinations.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
+
+            @if (isset($destination))
+                @method('PUT')
+            @endif
 
             <!-- Title -->
             <div class="form-group">
@@ -50,11 +54,11 @@
             </div>
 
             <!-- Image Preview (if editing) -->
-            @if (isset($destination))
+            {{-- @if (isset($destination))
                 <div class="form-group">
                     <img src="{{ asset($destination->image) }}" alt="Destination Image" class="img-fluid">
                 </div>
-            @endif
+            @endif --}}
 
             <!-- Image Upload -->
             <div class="form-group d-flex flex-column">
@@ -66,7 +70,7 @@
                     </div>
                 </div>
                 <div class="mt-2 d-flex justify-content-center">
-                    <img id="imagePreview" src="{{ isset($destination) ? asset($destination->image) : '' }}" alt="Image Preview" class="img-fluid" style="display: {{ isset($destination) ? 'block' : 'none' }};">
+                    <img id="imagePreview" src="{{asset('/storage/' . $destination->image)}}" alt="Image Preview" class="img-fluid" style="display: {{ isset($destination) ? 'block' : 'none' }};">
                 </div>
             </div>
 
@@ -100,7 +104,7 @@
             <div class="form-group">
                 <div class="d-flex justify-content-center">
                     <button type="submit" class="btn btn-dark">
-                        <b>Thêm điểm đến</b>
+                        <b>Cập nhật điểm đến</b>
                     </button>
                 </div>
             </div>

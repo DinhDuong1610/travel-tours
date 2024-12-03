@@ -27,6 +27,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::get('/destinations', [DestinationsController::class, 'index'])->name('admin.destinations.index');
     Route::get('/destinations/create', [DestinationsController::class, 'create'])->name('admin.destinations.create');
     Route::post('/desitinations/store', [DestinationsController::class, 'store'])->name('admin.destinations.store');
+    Route::get('/destinations/{id}/edit', [DestinationsController::class, 'edit'])->name('admin.destinations.edit');
 
     Route::get('/tag', [TagController::class, 'index'])->name('admin.tag.index');
     Route::get('/tag/create', [TagController::class, 'create'])->name('admin.tag.create');
