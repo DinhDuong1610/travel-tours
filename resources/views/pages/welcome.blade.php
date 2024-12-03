@@ -215,21 +215,21 @@
 			@foreach ($destinations as $destination)
 			<div class="col-md-4 ftco-animate">
 				<div class="project-wrap">
-				<a href="{{route('pages.bali', ['id' => $destination->id])}}" class="img" style="background-image: url({{asset('/storage/' . $destination->image)}});">
+				<a href="{{route('pages.detail', ['slug' => $destination->slug])}}" class="img" style="background-image: url({{asset('/storage/' . $destination->image)}});">
 						{{-- <p>
 							{{$destination->category->name}}
 						</p> --}}
 					</a>
 					<div class="text p-4">
 						<span class="price">{{ number_format($destination->pricing, 0, ',', '.') }} VND</span>
-						{{-- <span class="days">3 Days Tour</span> --}}
-						<h3><a href="{{route('pages.bali', ['id' => $destination->id])}}">
+						<span class="days">{{$destination->description}}</span>
+						<h3><a href="{{route('pages.detail', ['slug' => $destination->slug])}}">
 								{{$destination->title}}
 							</a></h3>
 						<ul>
-							<li><span class="flaticon-shower"></span>2</li>
-							<li><span class="flaticon-king-size"></span>3</li>
-							{{-- <li><span class="flaticon-sun-umbrella"></span>Near Beach</li> --}}
+							<li><span class="flaticon-shower"></span></li>
+							<li><span class="flaticon-king-size"></span></li>
+							<li><span class="flaticon-sun-umbrella"></span></li>
 						</ul>
 					</div>
 				</div>

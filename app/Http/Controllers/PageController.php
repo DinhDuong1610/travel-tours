@@ -11,13 +11,7 @@ use Illuminate\Http\Request;
 class PageController extends Controller
 {
     public function index() {
-        $search = request()->query('search');
-        if (request()->query('search')) {
-            $destinations = Destinations::where('title', 'LIKE', "%{$search}%")->paginate(3);
-        } else {
-            $destinations = Destinations::paginate(6);
-        }
-
+        $destinations = Destinations::paginate(6);
         $categories = Category::limit(5)->get();
         $tags = Tag::limit(5)->get();
 
@@ -52,13 +46,13 @@ class PageController extends Controller
     }
 
 
-    public function bali($id) {
-        $destinationOrther = Destinations::where('id', '!=', $id)->inRandomOrder()->limit(1)->first();
+    public function detail($slug) {
+        $destinationOrther = Destinations::where('slug', '!=', $slug)->inRandomOrder()->limit(1)->first();
         $tags = Tag::all();
         $categories = Category::all();
-        $destination = Destinations::find($id);
+        $destination = Destinations::where('slug', $slug)->first();
 
-        return view('pages.bali', compact('destination', 'destinationOrther', 'tags', 'categories'));
+        return view('pages.detail', compact('destination', 'destinationOrther', 'tags', 'categories'));
     }
 
     public function cart() {

@@ -88,6 +88,7 @@
 
                     <div class="sidebar-box ftco-animate">
                         <h3>Các địa điểm liên quan khác</h3>
+                        @if($destinationOrther)
                         <div class="project-wrap">
                             <a href="#" class="img" style="background-image: url('{{asset('/storage/' . $destinationOrther->image)}}');"></a>
                             <div class="text p-4">
@@ -102,6 +103,7 @@
                                 </ul>
                             </div>
                         </div>
+                        @endif
                     </div>
 
                     {{-- <div class="sidebar-box ftco-animate">
