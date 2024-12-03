@@ -1,7 +1,7 @@
 <div class="col-md-4 sidebar">
     <ul class="list-group">
         <li class="list-group-item">
-            <a href="#"><i class=" sidebar-icon fa-solid fa-house"></i> Tổng quan</a>
+            <a href="{{route('admin.dashboard.index')}}"><i class=" sidebar-icon fa-solid fa-house"></i> Tổng quan</a>
         </li>
         <li class="list-group-item">
             <a href="{{ Route('admin.destinations.index') }}"><i class="sidebar-icon fas fa-map-marked-alt"></i> Điểm đến</a>

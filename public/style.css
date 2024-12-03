@@ -1,0 +1,302 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+}
+body {
+    background-color: gray;
+}
+h1,
+h2 {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    -webkit-box-reflect: below 1px linear-gradient;
+    outline: none;
+    animation: animate 1s linear infinite;
+}
+
+@keyframes animate {
+    0%,
+    18%,
+    20%,
+    50.1%,
+    65.1%,
+    80%,
+    90.1%,
+    92% {
+        color: #0e3742;
+        text-shadow: none;
+    }
+    18.1%,
+    20.1%,
+    30%,
+    50%,
+    60.1%,
+    65%,
+    80.1%,
+    92.1%,
+    100% {
+        color: #fff;
+        text-shadow: 0 0 10px #03bcf4, 0 0 20px #03bcf4, 0 0 40px #03bcf4,
+            0 0 80px #03bcf4, 0 0 160px #03bcf4;
+    }
+}
+.sigin {
+    background-color: #fff;
+    border-radius: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+    position: relative;
+    overflow: hidden;
+    width: 768px;
+    max-width: 100%;
+    min-height: 480px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.sigin p {
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.3px;
+    margin: 20px 0;
+}
+
+.sigin span {
+    font-size: 12px;
+}
+
+.sigin a {
+    color: #333;
+    font-size: 13px;
+    text-decoration: none;
+    margin: 15px 0 10px;
+}
+
+.sigin button {
+    background-color: #512da8;
+    color: #fff;
+    font-size: 12px;
+    padding: 10px 45px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.sigin button.hidden {
+    background-color: transparent;
+    border-color: #fff;
+}
+
+.sigin form {
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 40px;
+    height: 100%;
+}
+
+.sigin input {
+    background-color: #eee;
+    border: none;
+    margin: 8px 0;
+    padding: 10px 15px;
+    font-size: 13px;
+    border-radius: 8px;
+    width: 100%;
+    outline: none;
+}
+
+.form-sigin {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    transition: all 0.6s ease-in-out;
+}
+
+.sign-in {
+    left: 0;
+    width: 50%;
+    z-index: 2;
+}
+
+.sigin.active .sign-in {
+    transform: translateX(100%);
+}
+
+.sign-up {
+    left: 0;
+    width: 50%;
+    opacity: 0;
+    z-index: 1;
+}
+
+.sigin.active .sign-up {
+    transform: translateX(100%);
+    opacity: 1;
+    z-index: 5;
+    animation: move 0.6s;
+}
+
+@keyframes move {
+    0%,
+    49.99% {
+        opacity: 0;
+        z-index: 1;
+    }
+    50%,
+    100% {
+        opacity: 1;
+        z-index: 5;
+    }
+}
+
+.social-icons {
+    margin: 20px 0;
+}
+
+.social-icons a {
+    border: 1px solid #ccc;
+    border-radius: 20%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 3px;
+    width: 40px;
+    height: 40px;
+}
+
+.convert-sigin {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    transition: all 0.6s ease-in-out;
+    border-radius: 150px 0 0 100px;
+    z-index: 1000;
+}
+
+.sigin.active .convert-sigin {
+    transform: translateX(-100%);
+    border-radius: 0 150px 100px 0;
+}
+
+.convert {
+    background-color: #494d51ad; /* Mã màu vàng */
+    height: 100%;
+    background: linear-gradient(
+        to right,
+        #494d51ad,
+        #494d51ad
+    ); /* Gradient màu vàng */
+    color: #fff;
+    position: relative;
+    left: -100%;
+    height: 100%;
+    width: 200%;
+    transform: translateX(0);
+    transition: all 0.6s ease-in-out;
+}
+
+.sigin.active .convert {
+    transform: translateX(50%);
+}
+
+.convert-panel {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 30px;
+    text-align: center;
+    top: 0;
+    transform: translateX(0);
+    transition: all 0.6s ease-in-out;
+}
+
+.convert-left {
+    transform: translateX(-200%);
+}
+
+.sigin.active .convert-left {
+    transform: translateX(0);
+}
+
+.convert-right {
+    right: 0;
+    transform: translateX(0);
+}
+
+.sigin.active .convert-right {
+    transform: translateX(200%);
+}
+
+.img-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 1101;
+}
+
+.animate-movingXY {
+    -webkit-animation: moveXY 2s linear infinite;
+    animation: moveXY 2s linear infinite;
+}
+
+@keyframes moveXY {
+    0%,
+    100% {
+        transform: translate(0, 0);
+    }
+    25% {
+        transform: translate(10px, -10px);
+    }
+    50% {
+        transform: translate(20px, 0);
+    }
+    75% {
+        transform: translate(10px, 10px);
+    }
+}
+.img-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 1101;
+}
+
+.background {
+    opacity: 60%;
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+    size: cover;
+    background-image: linear-gradient(
+        rgba(0, 0, 0, 0.5),
+        /* Màu gradient ở trên (50% đen, trong suốt) */ rgba(0, 0, 0, 0.5)
+    ); /* Ảnh nền */
+    background-size: cover; /* Đảm bảo ảnh nền bao phủ toàn bộ */
+    background-position: center;
+
+}
+
+.background img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
