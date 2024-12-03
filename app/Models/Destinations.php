@@ -15,7 +15,7 @@ class Destinations extends Model
     }
 
     public function tags() {
-        return $this->belongsToMany(Tag::class);
+        return $this->belongsToMany(Tag::class, 'destinations_tag', 'destinations_id', 'tag_id');
     }
 
     public function checkouts() {

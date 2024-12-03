@@ -20,7 +20,13 @@
             <!-- Title -->
             <div class="form-group">
                 <label for="title">Tiêu đề</label>
-                <input type="text" class="form-control" name="title" id="title" value="{{ isset($destination) ? $destination->title : '' }}">
+                <input type="text" class="form-control" name="title" id="title" value="{{ isset($destination) ? $destination->title : '' }}" onkeyup="generateSlug()">
+            </div>
+
+            <!-- Slug -->
+            <div class="form-group">
+                <label for="slug">Slug</label>
+                <input type="text" class="form-control" name="slug" id="slug" value="{{ isset($destination) ? $destination->slug : '' }}" readonly>
             </div>
 
             <!-- Description -->
@@ -139,6 +145,26 @@
     }
 });
 
+</script>
+
+<script>
+    // Function to generate slug from title
+    function generateSlug() {
+        let title = document.getElementById('title').value;
+        let slug = title.toLowerCase()
+                      .replace(/á|à|ả|ã|ạ|â|ấ|ầ|ẩ|ẫ|ậ/g, 'a')
+                      .replace(/é|è|ẻ|ẽ|ẹ|ê|ế|ề|ể|ễ|ệ/g, 'e')
+                      .replace(/í|ì|ỉ|ĩ|ị/g, 'i')
+                      .replace(/ó|ò|ỏ|õ|ọ|ô|ố|ồ|ổ|ỗ|ộ/g, 'o')
+                      .replace(/ú|ù|ủ|ũ|ụ|ư|ứ|ừ|ử|ữ|ự/g, 'u')
+                      .replace(/ý|ỳ|ỷ|ỹ|ỵ/g, 'y')
+                      .replace(/đ/g, 'd')
+                      .replace(/\s+/g, '-') 
+                      .replace(/[^a-z0-9\-]/g, '') 
+                      .replace(/-+/g, '-'); 
+
+        document.getElementById('slug').value = slug;
+    }
 </script>
 @endsection
 

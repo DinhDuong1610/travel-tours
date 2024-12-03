@@ -22,11 +22,14 @@ class CreateDestinationsRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|unique:Destinations',
+            'pricing' => 'required',
+            'title' => 'required|string|max:255|unique:Destinations',
+            'slug' => 'required|string|max:255|unique:Destinations,slug',
             'description' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'content' => 'required',
             'category' => 'required',
+            'published_at' => 'required',
         ];
     }
 }
