@@ -21,10 +21,11 @@ class UpdateDestinationsRequest extends FormRequest
      */
     public function rules(): array
     {
+        $id = $this->route('id');
         return [
             'pricing' => 'required',
-            'title' => 'required|string|max:255|unique:Destinations',
-            'slug' => 'required|string|max:255|unique:Destinations,slug',
+            'title' => 'required|string|max:255|unique:destinations,title,' . $id,
+            'slug' => 'required|string|max:255|unique:destinations,slug,' . $id,
             'description' => 'required',
             'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
             'content' => 'required',

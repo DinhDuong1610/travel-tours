@@ -10,12 +10,9 @@
     <div class="card-body">
         @include('error')
 
-        <form action="{{ route('admin.destinations.store') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('admin.destinations.update', ['id' => $destination->id]) }}" method="POST" enctype="multipart/form-data">
             @csrf
-
-            @if (isset($destination))
-                @method('PUT')
-            @endif
+            @method('PUT')
 
             <!-- Title -->
             <div class="form-group">
