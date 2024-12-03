@@ -4,7 +4,7 @@
 
 <div class="card card-default shadow-sm">
     <div class="card-header bg-dark text-white d-flex justify-content-between">
-        <strong>Thêm bài viết</strong>
+        <strong>Sửa bài viết</strong>
     </div>
 
     <div class="card-body">
@@ -12,6 +12,7 @@
 
         <form action="{{ route('admin.blog.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
+            @method('PUT')
 
             <!-- Title -->
             <div class="form-group">
@@ -45,11 +46,11 @@
             </div>
 
             <!-- Image Preview (if editing) -->
-            @if (isset($blog))
+            {{-- @if (isset($blog))
                 <div class="form-group">
                     <img src="{{ asset($blog->image) }}" alt="Blog Image" class="img-fluid">
                 </div>
-            @endif
+            @endif --}}
 
             <!-- Image Upload -->
             <div class="form-group d-flex flex-column">
@@ -61,7 +62,7 @@
                     </div>
                 </div>
                 <div class="mt-2 d-flex justify-content-center">
-                    <img id="imagePreview" src="{{ isset($blog) ? asset($blog->image) : '' }}" alt="Image Preview" class="img-fluid" style="display: {{ isset($blog) ? 'block' : 'none' }};">
+                    <img id="imagePreview" src="{{ asset('/storage/' . $blog->image)}}" alt="Image Preview" class="img-fluid" style="display: {{ isset($blog) ? 'block' : 'none' }};">
                 </div>
             </div>
 
@@ -95,7 +96,7 @@
             <div class="form-group">
                 <div class="d-flex justify-content-center">
                     <button type="submit" class="btn btn-dark">
-                        <b>Thêm bài viết</b>
+                        <b>Cập nhật bài viết</b>
                     </button>
                 </div>
             </div>

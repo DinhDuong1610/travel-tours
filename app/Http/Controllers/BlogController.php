@@ -38,7 +38,15 @@ class BlogController extends Controller
         }
 
         $blog->save();
-        
+
         return redirect()->route('admin.blog.index')->with('success', 'Blog created successfully');
     }
+
+    public function edit($id) {
+        $blog = Blog::find($id);
+        $categories = Category::select('id', 'name')->get();
+        return view('admin.blog.edit', compact('blog', 'categories'));
+    }
 }   
+
+
