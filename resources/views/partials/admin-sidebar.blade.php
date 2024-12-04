@@ -16,7 +16,7 @@
             <a href="{{ Route('admin.blog.index') }}"><i class="sidebar-icon fas fa-blog"></i> Bài viết</a>
         </li>
         <li class="list-group-item">
-            <a href="#"><i class="sidebar-icon fa-solid fa-plane-departure"></i>Đơn đặt tour</a>
+            <a href="{{ Route('admin.checkout.index') }}"><i class="sidebar-icon fa-solid fa-plane-departure"></i>Đơn đặt tour</a>
         </li>
         @if (auth()->user()->isAdmin())
             <li class="list-group-item">

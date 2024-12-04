@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\DashBoardController;
 use App\Http\Controllers\DestinationsController;
 use App\Http\Controllers\PageController;
@@ -49,6 +50,9 @@ Route::middleware(['auth', AuthAdmin::class])->prefix('admin')->group(function (
     Route::get('/user', action: [UserController::class, 'index'])->name('admin.user.index');
     Route::put('/user/{id}/updateRole', [UserController::class, 'updateRole'])->name('admin.user.updateRole');
     Route::delete('/user/{id}/destroy', [UserController::class, 'destroy'])->name('admin.user.destroy');
+
+    Route::get('/checkout', [CheckoutController::class, 'index'])->name('admin.checkout.index');
+    Route::put('/checkout/{id}/updateStatus', [CheckoutController::class, 'updateStatus'])->name('admin.checkout.updateStatus');
 });
 
 Route::get('/', [PageController::class, 'index'])->name('pages.welcome');
@@ -68,3 +72,5 @@ Route::get('/cart', [PageController::class, 'cart'])->name('pages.cart');
 Route::get('/checkout/{id}', [PageController::class, 'checkout'])->name('pages.checkout');
 
 Route::get('/stripe', [PageController::class, 'stripe'])->name('pages.stripe');
+
+Route::post('/checkout/store', [CheckoutController::class, 'store'])->name('checkout.store');

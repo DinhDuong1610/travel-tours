@@ -39,14 +39,16 @@ class DashBoardController extends Controller
             }
         }
 
+        $checkouts_list = Checkout::where('status', 'pending')->orderBy('created_at', 'desc')->get();
+
         $data = [
             'users' => $users,
             'destinations' => $destinations,
             'blogs' => $blogs,
             'checkouts' => $checkouts,
-            'monthlyCheckoutData' => $monthlyCheckoutData
+            'monthlyCheckoutData' => $monthlyCheckoutData,
         ];
 
-        return view('admin.dashboard.index', compact('data'));
+        return view('admin.dashboard.index', compact('data', 'checkouts_list'));
     }
 }

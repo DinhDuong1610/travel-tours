@@ -75,7 +75,8 @@
                             <div class="section_title">Thông tin cá nhân</div>
                             <div class="section_subtitle">Hãy điền đầy đủ thông tin người đặt tour</div>
                             <div class="checkout_form_container">
-                                <form action="#" id="checkout_form" method="POST" class="checkout_form">
+                                <form action="{{ route('checkout.store') }}" id="checkout_form" method="POST"
+                                    class="checkout_form">
                                     @csrf
                                     <div>
                                         <!-- Name -->
@@ -151,13 +152,12 @@
                                         @endif
                                     </div>
 
-                                    <input type="hidden" id="user_id"
-                                        class="form-control"
-                                        name="user_id" id="user_id" required="required" value="{{ Auth::user()->id }}">
+                                    <input type="hidden" id="user_id" class="form-control" name="user_id"
+                                        id="user_id" required="required" value="{{ Auth::user()->id }}">
 
-                                    <input type="hidden" id="destination_id"
-                                        class="form-control"
-                                        name="destination_id" id="destination_id" required="required" value="{{ $destinations->id }}">
+                                    <input type="hidden" id="destination_id" class="form-control"
+                                        name="destination_id" id="destination_id" required="required"
+                                        value="{{ $destinations->id }}">
 
 
                                 </form>
@@ -180,23 +180,26 @@
                                 <ul class="order_list">
                                     <li class="d-flex flex-row align-items-center justify-content-start">
                                         <div class="order_list_title">{{ $destinations->title }}</div>
-                                        <div class="order_list_value ml-auto">{{ number_format($destinations->pricing, 0, ',', '.') }}</div>
+                                        <div class="order_list_value ml-auto">
+                                            {{ number_format($destinations->pricing, 0, ',', '.') }}</div>
                                     </li>
                                     <li class="d-flex flex-row align-items-center justify-content-start">
-																			<div class="order_list_title">Số hành khách</div>
-																			<div class="order_list_value ml-auto" id="passenger_count">0</div>
-																	</li>
-																	<li class="d-flex flex-row align-items-center justify-content-start">
-																		<div class="order_list_title">Tổng tiền</div>
-																		<div class="order_list_value ml-auto" id="total_price">{{ $destinations->pricing }}</div>
-																</li>
+                                        <div class="order_list_title">Số hành khách</div>
+                                        <div class="order_list_value ml-auto" id="passenger_count">0</div>
+                                    </li>
+                                    <li class="d-flex flex-row align-items-center justify-content-start">
+                                        <div class="order_list_title">Tổng tiền</div>
+                                        <div class="order_list_value ml-auto" id="total_price">
+                                            {{ $destinations->pricing }}</div>
+                                    </li>
                                 </ul>
                             </div>
 
                             <!-- Order Text -->
                             <div class="order_text">Bạn đang nóng lòng bắt đầu chuyến đi của mình?</div>
 
-														<div class="d-flex justify-content-center"><button type="submit" class="btn btn-dark mt-5 mb-3 py-2 px-4">Đặt ngay</button></div>
+                            <div class="d-flex justify-content-center"><button type="submit"
+                                    class="btn btn-dark mt-5 mb-3 py-2 px-4">Đặt ngay</button></div>
                         </div>
                     </div>
                 </div>
@@ -218,37 +221,39 @@
     <script src="{{ asset('plugins/parallax-js-master/parallax.min.js') }}"></script>
     <script src="{{ asset('js/checkout.js') }}"></script>
 
-		<script>
-			document.addEventListener("DOMContentLoaded", function() {
-					const numberOfPassengersInput = document.getElementById('number_of_passengers');
-					const passengerCountDisplay = document.getElementById('passenger_count');
-					const totalPriceDisplay = document.getElementById('total_price');
-					const pricingPerPassenger = parseFloat('{{ $destinations->pricing }}');
-	
-					function formatCurrency(amount) {
-							return new Intl.NumberFormat('vi-VN', {
-									style: 'currency',
-									currency: 'VND',
-							}).format(amount);
-					}
-	
-					function updatePassengerCountAndTotalPrice() {
-							const numberOfPassengers = parseInt(numberOfPassengersInput.value) || 1;  
-							const totalPrice = numberOfPassengers * pricingPerPassenger; 
-	
-							passengerCountDisplay.textContent = numberOfPassengers;
-							totalPriceDisplay.textContent = formatCurrency(totalPrice);
-					}
-	
-					numberOfPassengersInput.addEventListener('input', updatePassengerCountAndTotalPrice);
-	
-					updatePassengerCountAndTotalPrice();
-			});
-	</script>
-	
-	
-	
-	
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const numberOfPassengersInput = document.getElementById('number_of_passengers');
+            const passengerCountDisplay = document.getElementById('passenger_count');
+            const totalPriceDisplay = document.getElementById('total_price');
+            const pricingPerPassenger = parseFloat('{{ $destinations->pricing }}');
+
+            function formatCurrency(amount) {
+                return new Intl.NumberFormat('vi-VN', {
+                    style: 'currency',
+                    currency: 'VND',
+                }).format(amount);
+            }
+
+            function updatePassengerCountAndTotalPrice() {
+                const numberOfPassengers = parseInt(numberOfPassengersInput.value) || 1;
+                const totalPrice = numberOfPassengers * pricingPerPassenger;
+
+                passengerCountDisplay.textContent = numberOfPassengers;
+                totalPriceDisplay.textContent = formatCurrency(totalPrice);
+            }
+
+            numberOfPassengersInput.addEventListener('input', updatePassengerCountAndTotalPrice);
+
+            updatePassengerCountAndTotalPrice();
+
+            const submitButton = document.querySelector('button[type="submit"]');
+            submitButton.addEventListener('click', function(event) {
+							checkout_form.submit();
+            });
+        });
+    </script>
+
 </body>
 
 </html>
