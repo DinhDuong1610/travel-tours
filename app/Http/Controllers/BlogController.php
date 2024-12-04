@@ -79,7 +79,13 @@ class BlogController extends Controller
         $blog->delete();
         return redirect()->route('admin.blog.index')->with('success', 'Xóa bài viết thành công!');
     }
+
+    public function blogDetail($slug) {
+        $blog = Blog::where('slug', $slug)->first();
+        return view('pages.blog-detail', compact('blog'));
+    }
 }   
+
 
 
 

@@ -63,6 +63,8 @@ Route::get('/packages', [PageController::class, 'packages'])->name('pages.packag
 
 Route::get('/blog', [PageController::class, 'blog'])->name('pages.blog');
 
+Route::get('/blog/detail/{slug}', [BlogController::class, 'blogDetail'])->name('pages.blog.detail');
+
 Route::get('/contact', [PageController::class, 'contact'])->name('pages.contact');
 
 Route::get('destination/detail/{slug}', [PageController::class, 'detail'])->name('pages.detail');

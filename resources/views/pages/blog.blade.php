@@ -84,13 +84,13 @@
         @foreach ($blogs as $blog)
         <div class="col-md-4 ftco-animate">
           <div class="project-wrap">
-            <a href="#" class="img" style="background-image: url({{asset('/storage/' . $blog->image)}});">
+            <a href="{{ route('pages.blog.detail', ['slug' => $blog->slug]) }}" class="img" style="background-image: url({{asset('/storage/' . $blog->image)}});">
               {{-- <p>
                 {{$blog->category->name}}
               </p> --}}
             </a>
             <div class="text p-4">
-              <h5><a href="">
+              <h5><a href="{{ route('pages.blog.detail', ['slug' => $blog->slug]) }}">
                   {{$blog->title}}
                 </a></h5>
             </div>
